@@ -1,0 +1,295 @@
+\frameT{Lexicographic Preference Trees (LP-Trees)}
+{
+	\begin{enumerate}
+		\item An \tit{LP tree} $\cL$ over 
+					$\cI=\{X_1,\ldots,X_p\}$ is a (\tit{binary}) tree, where
+		\begin{itemize}
+			\item each node $t$ in $\cL$ is labeled by an issue from $\cI$
+						and with \tit{preference information}, and
+			\item each issue appears \tbf{exactly once} on every path from the root to a leaf.
+		\end{itemize}
+	\end{enumerate}
+}
+
+\frameT{Positional Scoring Rules}
+{
+	\begin{itemize}
+		\item $k$-approval: ($1,\ldots,1,0,\ldots,0$) with $k$ being the number
+					of $1$'s and $m-k$ the number of $0$'s where $m=2^p$.
+		\item $(k,l)$-approval: $(a,\ldots, a, b,\ldots, b, 0\ldots, 0)$,
+		      where $a$ and $b$ are constants ($a>b$)
+					and the numbers of $a$'s and $b$'s equal to $k$ and $l$,
+      		respectively.
+		\item $b$-Borda: ($b, b-1, \ldots, 0$), where if $b > m-1$, $b$-Borda is reduced to the regular
+							Borda rule with ($m-1, m-2, \ldots, 1, 0$).
+	\end{itemize}
+}
+
+\frameT{The Evaluation and Winner Problems}
+{
+  \begin{block}{The Evaluation Problem}
+		Let $r$ be a positional scoring rule with a scoring 
+		vector $w$, $\cC$ a class of LP trees.
+		Given a $\cC$-profile $P$ of $n$ LP trees over $p$ issues and a 
+		positive integer $R$,
+		the \tit{evaluation} problem is to decide whether 
+		there exists an alternative $o \in \mathcal{X}$ such that $s_{{w}}(o,P)
+    \geq R$.
+  \end{block}
+
+	\vspace{0.5cm}
+
+  \begin{block}{The Winner Problem}
+		Let $r$ be a positional scoring rule with a scoring 
+		vector $w$, $\cC$ a class of LP trees.
+		Given a $\cC$-profile $P$ of $n$ LP trees over $p$ issues,
+		the \tit{winner} problem is to compute an alternative
+		$o \in \cX$ with the maximum score $s_w(o,P)$.
+  \end{block}
+}
+
+\frameT{Complexity of the Evaluation Problem: $k$-Approval}
+{
+	\begin{figure}
+		\centering
+    \begin{subfigure}[b]{0.45\textwidth}
+			\centering
+		  \begin{tabular}[0.45\textwidth]{ | c | c | c | }
+		    \hline
+		      & UP & CP \\
+		    \hline
+		    UI & P & P \\
+		    \hline
+		    CI & P & P \\
+		    \hline
+		  \end{tabular}
+			\caption{\footnotesize $k=2^{p-1} \pm f(p)$, $f(p)$ is a poly}
+		\end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+			\centering
+		  \begin{tabular}[0.45\textwidth]{ | c | c | c | }
+		    \hline
+		      & UP & CP \\
+		    \hline
+		    UI & NPC & NPC \\
+		    \hline
+		    CI & NPC & NPC \\
+		    \hline
+		  \end{tabular}
+			\caption{\footnotesize $k=2^{p-c}$, $c>1$ is a const}
+		\end{subfigure}
+		\caption{$k$-Approval}
+	\end{figure}
+%	mutiple of high order of 2
+}
+
+\frameT{Complexity of the Evaluation Problem: $(k,l)$-Approval}
+{
+	\begin{figure}
+		\centering
+    \begin{subfigure}[b]{0.45\textwidth}
+			\centering
+		  \begin{tabular}[0.45\textwidth]{ | c | c | c | }
+		    \hline
+		      & UP & CP \\
+		    \hline
+		    UI & P & P \\
+		    \hline
+		    CI & P & P \\
+		    \hline
+		  \end{tabular}
+			\caption{$k=l=2^{p-1}$}
+		\end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+			\centering
+		  \begin{tabular}[0.45\textwidth]{ | c | c | c | }
+		    \hline
+		      & UP & CP \\
+		    \hline
+		    UI & NPC & NPC \\
+		    \hline
+		    CI & NPC & NPC \\
+		    \hline
+		  \end{tabular}
+			\caption{\footnotesize $k=l=2^{p-c}$, $c>1$ is a const}
+		\end{subfigure}
+		\caption{$(k,l)$-Approval \footnotemark}
+	\end{figure}
+
+	\fnt{
+		Liu and Truszczynski,
+		\tit{Aggregating Conditionally Lexicographic Preferences Using Answer Set Programming},
+		ADT, 2013.
+	}
+
+}
+
+\frameT{Complexity of the Evaluation Problem: $b$-Borda}
+{
+	\begin{figure}
+		\centering
+    \begin{subfigure}[b]{0.45\textwidth}
+			\centering
+		  \begin{tabular}[0.45\textwidth]{ | c | c | c | }
+		    \hline
+		      & UP & CP \\
+		    \hline
+		    UI & P & NPC \\
+		    \hline
+		    CI & NPC & NPC \\
+		    \hline
+		  \end{tabular}
+			\caption{$b = 2^p-1$}
+		\end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+			\centering
+		  \begin{tabular}[0.45\textwidth]{ | c | c | c | }
+		    \hline
+		      & UP & CP \\
+		    \hline
+		    UI & NPC & NPC \\
+		    \hline
+		    CI & NPC & NPC \\
+		    \hline
+		  \end{tabular}
+			\caption{\footnotesize $b = 2^{p-c}-1$, $c\geq 1$ is a const}
+		\end{subfigure}
+		\caption{$b$-Borda}
+	\end{figure}
+}
+
+\frameT{Modeling the Problems in ASP}
+{
+	\begin{figure}
+		\centering
+		\includegraphics[width=8cm,height=3.8cm]{figs/LPTrees/asp_win_struct.png}
+		\caption{The winner problem}
+	\end{figure}
+
+	\vspace{-0.45cm}
+
+	\begin{itemize}
+		\item Solvers: \tit{clingo}\footfullcite{Gebser:clingo}, 
+					\tit{clingcon}\footfullcite{Ostrowski:clingcon}
+	\end{itemize}
+}
+
+\frameT{Modeling the Problems in W-MAXSAT}
+{
+	\begin{figure}
+		\centering
+		\includegraphics[width=8cm,height=3.6cm]{figs/LPTrees/sat_win_struct.png}
+		\caption{The winner problem}
+	\end{figure}
+
+	\vspace{-0.45cm}
+
+	\begin{itemize}
+		\item Solver: \tit{toulbar}\footfullcite{sanchez2008max}
+	\end{itemize}
+}
+
+\frameT{Random LP Profiles}
+{
+	\begin{itemize}
+		\item To experiment with LP profiles, we developed methods to randomly generate
+					\tit{encodings} of
+          a special type of CI-CP LP tree of size linear in the number of
+          issues
+	\end{itemize}
+
+	\begin{figure}
+		\vspace{-0.2cm}
+		\centering
+		\includegraphics[width=0.4\textwidth]{figs/LPTrees/simple_LP_tree.png}
+		\vspace{-0.3cm}
+		\caption{Random LP tree}
+	\end{figure}
+}
+
+\frameT{Varying $p$ and $n$: $2^{p-2}$-approval}
+{
+	\begin{figure}
+		\centering
+    \begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[width=0.95\textwidth]{figs/LPTrees/win/expAppFISCICP.pdf}
+			\caption{Fixed \#issues (10)}
+		\end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[width=0.95\textwidth]{figs/LPTrees/win/expAppFVSCICP.pdf}
+			\caption{Fixed \#votes (1000)}
+		\end{subfigure}
+
+		\caption{Solving the winner problem}
+	\end{figure}
+}
+
+\frameT{Varying $p$ and $n$: ($2^{p-2},2^{p-2}$)-approval
+	\fn{
+		scoring vector: ($2,\ldots,2,1,\ldots,1,0,\ldots,0$) with the numbers
+		of 2's and 1's equal to $2^{p-2}$
+	}}
+{
+	\begin{figure}
+		\centering
+    \begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[width=0.95\textwidth]{figs/LPTrees/win/2kAppFISCICP.pdf}
+			\caption{Fixed \#issues (10)}
+		\end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[width=0.95\textwidth]{figs/LPTrees/win/2kAppFVSCICP.pdf}
+			\caption{Fixed \#votes (1000)}
+		\end{subfigure}
+		\caption{Solving the winner problem}
+	\end{figure}
+}
+
+\frameT{Varying $p$ and $n$: Borda}
+{
+	\begin{figure}
+		\centering
+    \begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[width=0.95\textwidth]{figs/LPTrees/win/bordaFISCICP.pdf}
+			\caption{Fixed \#issues (10)}
+		\end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[width=0.95\textwidth]{figs/LPTrees/win/bordaFVSCICP.pdf}
+			\caption{Fixed \#votes (1000)}
+		\end{subfigure}
+
+		\caption{Solving the winner problem}
+	\end{figure}
+}
+
+\frameT{Personalization in Trip Planning}{
+	\begin{enumerate}
+		\item Important to incorporate user constraints and preferences into trip
+					planning systems.
+		\item Collaboration with experts (in AI, planning, optimization, multi-agent systems) at PARC.
+		\item Developed a hipergraph-based trip planner that accommodates constraints specified as
+					\tit{linear temporal logic} and preferences expressed as \tit{preferential cost function} 
+					to compute optimal routes using A*\footfullcite{abs/parc/Liu}.
+		\item Available later for trip planning in the Bay Area, LA, and Denver.
+	\end{enumerate}
+}
+
+\frameT{Personalization in Trip Planning}{
+	\begin{enumerate}
+		\item From SJC, to Pier 39, Monday, 9am.
+		\item Constraints: never drive a car, and bike for 1 to 2 hours.
+		\item Preferences: bike = public (0.25) $>$ wait(2) $>$ walk(3), and 30\$/hr.
+	\end{enumerate}
+
+	\vspace{-0.3cm}
+
+	\begin{figure}[ht!]
+	  \centering
+	    \includegraphics[width=0.7\textwidth]{figs/PARC/route.png}
+	\end{figure}
+}

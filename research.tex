@@ -1,0 +1,217 @@
+\documentclass[xcolor=table,fleqn]{beamer}
+
+\usetheme[secheader,compress]{Madrid} %Primary theme
+%\setbeamertemplate{headline}{}  % uncomment this line if do not want headline shown in every frame.
+
+% Change base colour beamer@blendedblue (originally RGB: 0.2,0.2,0.7)
+%\colorlet{beamer@blendedblue}{red!40!black}  % For College of Charleston (Maroon and White)
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+\usepackage{xcolor}
+\usepackage{epsfig}
+\usepackage{stackengine}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{array}
+\usepackage{ulem}
+\usepackage{amsthm}
+\usepackage{textpos}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{pbox}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usepackage{tabularx}
+\usepackage{framed}
+\usetikzlibrary{arrows}
+\usepackage{amsmath}
+\usepackage{datetime}
+
+
+%%%%%% Comment the following two if want bib info display in later frames.
+\usepackage[backend=bibtex]{biblatex}
+\bibliography{research}
+
+\tikzset{
+  main node/.style={circle,draw,font=\small},
+  rectangle/.style={font=\small},
+	empty/.style={edge from parent/.style={}}
+}
+
+\setlength{\mathindent}{0pt}
+
+\makeatletter
+\newcommand{\removelatexerror}{\let\@latex@error\@gobble}
+\makeatother
+
+\makeatletter
+\def\dual#1{\expandafter\dual@aux#1\@nil}
+\def\dual@aux#1/#2\@nil{\begin{tabular}[b]{@{}c@{}}#1\\#2\end{tabular}}
+\makeatother
+
+\let\proof\relax
+\let\endproof\relax
+
+%\setbeamertemplate{bibliography entry title}{}
+%\setbeamertemplate{bibliography entry location}{}
+%\setbeamertemplate{bibliography entry note}{}
+%\setbeamertemplate{bibliography item}[text]
+
+%%% Customize the footline of the title page
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+									 %\beamer@ifempty{\insertshortinstitute}{}{(\insertshortinstitute)}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+
+%%% Customize the title line of all pages except the title page
+\addtobeamertemplate{frametitle}{}{%
+\begin{textblock*}{100mm}(.85\textwidth,-1cm)
+%\includegraphics[height=1cm,width=2.3cm]{figs/UK_logo.png}
+\end{textblock*}}
+
+
+%%%%%%%%%%% BEGIN MACROS %%%%%%%%%%%%%%%%%%
+\newcommand{\ifLparse}{\operatorname{:-}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\CD}{\mathit{CD}}
+\newcommand{\NP}{\mathit{NP}}
+\newcommand{\CPT}{\mathit{CPT}}
+\newcommand{\Attr}{\mathit{Attr}}
+\newcommand{\Dom}{\mathit{Dom}}
+\newcommand{\Maj}{\mathit{Maj}}
+\newcommand{\SD}{\mathit{SD}}
+\newcommand{\TD}{\mathit{TD}}
+\newcommand{\IFF}{\mathit{iff}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\ninst}{\mathit{NonInst}}
+\newcommand{\inst}{\mathit{Inst}}
+\newcommand{\WS}{\mathit{WS}}
+\newcommand{\iss}{\mathit{Iss}}
+\newcommand{\un}{\mathit{un}}
+\newcommand{\rk}{\mathit{rk}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\iTran}{\textit{Transportation}}
+\newcommand{\iDest}{\textit{Destination}}
+\newcommand{\deltap}[1]{\mathit{\Delta^P_#1}}
+\newcommand{\sigmap}[1]{\mathit{\Sigma^P_#1}}
+\newcommand{\vph}{\mathit{\varphi}}
+\newcommand{\fn}[1]{\footnote{\tiny{#1}}}
+\newcommand{\figref}[1]{Figure~\ref{fig:#1}}
+\newcommand{\tit}[1]{\textit{#1}}
+\newcommand{\tbf}[1]{\textbf{#1}}
+\newcommand{\tsc}[1]{{\sc#1}}
+\newcommand{\fnt}[1]{\footnotetext{\tiny{#1}}}
+\renewcommand{\footnotesize}{\tiny}
+
+\newcommand{\Fontalg}{\fontsize{7}{7.2}\selectfont}
+
+\newcommand{\frameT}[2]{\frame{\frametitle{#1} #2}}
+\newcommand{\frameTop}[2]{\frame[t]{\frametitle{#1} #2}}
+
+\newcommand{\tab}{\hspace{1cm}}
+\newcommand{\spaceor}{\hspace{5pt} \textbf{or} \hspace{5pt}}
+\newcommand{\sidefigure}{.49\linewidth}
+
+\makeatletter
+\newenvironment<>{proofs}[1][\proofname]{%
+    \par
+    \def\insertproofname{#1\@addpunct{.}}%
+    \usebeamertemplate{proof begin}#2}
+  {\usebeamertemplate{proof end}}
+\makeatother
+
+\newcommand{\backupbegin}{
+   \newcounter{framenumberappendix}
+   \setcounter{framenumberappendix}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+   \addtocounter{framenumberappendix}{-\value{framenumber}}
+   \addtocounter{framenumber}{\value{framenumberappendix}} 
+}
+
+\newtheorem{thm}{Theorem}
+
+%\newdateformat{mydate}{\monthname[\THEMONTH] \THEYEAR}
+\newdateformat{mydate}{\THEMONTH/\THEDAY}
+
+\newcommand\subsetsim{\mathrel{%
+  \ooalign{\raise0.2ex\hbox{$\subset$}\cr\hidewidth\raise-0.8ex\hbox{\scalebox{0.9}{$\sim$}}\hidewidth\cr}}}
+
+\makeatletter
+    \newenvironment{withoutheadline}{
+        \setbeamertemplate{headline}[default]
+        \def\beamer@entrycode{\vspace*{-\headheight}}
+    }{}
+\makeatother
+%%%%%%%%%%% END MACROS %%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+\title[Preferences]
+	{Preference Trees over Combinatorial Domains}
+\author[Xudong Liu]{\linebreak \linebreak Xudong Liu}
+\institute{Ph.D. Candidate \\ Department of Computer Science \\ 
+					 College of Engineering \\ University of Kentucky\\ Lexington, KY, USA
+					 %[6em] \includegraphics[height=1.5cm,width=4cm]{figs/UNF_logo.png}
+					}
+\date[SC, CCEC, UNF, \mydate\today]{}
+
+%%%%%%%%%%% BEGIN TITLE PAGE %%%%%%%%%%%%%%%%%%
+\begin{withoutheadline}
+\frame
+{
+	\titlepage
+}
+\end{withoutheadline}
+%%%%%%%%%%%% END TITLE PAGE %%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+\input{intro}
+
+\section{Preliminary}
+\input{preliminary}
+
+\section{Research Overview}
+\input{overview}
+
+\section{Preference Modeling}
+\input{prefModeling}
+
+\section{Preference Learning}
+\input{prefLearning}
+
+\section{Preference Reasoning}
+\input{prefReasoning}
+
+\section{Future Research Scenarios}
+\input{future}
+
+\section{Conclusion}
+\input{conclude}
+
+\end{document}
