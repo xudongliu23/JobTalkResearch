@@ -35,6 +35,21 @@
 %%%%%% Comment the following two if want bib info display in later frames.
 \usepackage[backend=bibtex]{biblatex}
 \bibliography{research}
+%%%%%%
+
+\usepackage{bibentry}
+\usepackage{chngcntr}
+%\counterwithin*{footnote}{page}
+\newcommand{\footcitefull}[1]{%
+    \addtocounter{footnote}{1}%
+    \footnotetext[\thefootnote]{%
+        \addtocounter{footnote}{-1}%
+        \refstepcounter{footnote}\label{#1}%
+        \fullcite{#1}%
+    }%
+    $^{\ref{#1}}$%
+}
+\newcommand\secondcite[1]{$^{\ref{#1}}$}
 
 \tikzset{
   main node/.style={circle,draw,font=\small},
@@ -56,10 +71,15 @@
 \let\proof\relax
 \let\endproof\relax
 
-%\setbeamertemplate{bibliography entry title}{}
-%\setbeamertemplate{bibliography entry location}{}
-%\setbeamertemplate{bibliography entry note}{}
-%\setbeamertemplate{bibliography item}[text]
+\setbeamercolor*{bibliography entry title}{fg=black}
+\setbeamercolor*{bibliography entry author}{fg=black}
+\setbeamercolor*{bibliography entry location}{fg=black}
+\setbeamercolor*{bibliography entry note}{fg=black}
+\setbeamertemplate{bibliography item}{}
+
+\newcounter{saveenumi}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
 
 %%% Customize the footline of the title page
 \makeatletter
