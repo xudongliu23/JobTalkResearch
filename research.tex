@@ -1,7 +1,7 @@
 \documentclass[xcolor=table,fleqn]{beamer}
 
 \usetheme[secheader,compress]{Madrid} %Primary theme
-%\setbeamertemplate{headline}{}  % uncomment this line if do not want headline shown in every frame.
+\setbeamertemplate{headline}{}  % uncomment this line if do not want headline shown in every frame.
 
 % Change base colour beamer@blendedblue (originally RGB: 0.2,0.2,0.7)
 %\colorlet{beamer@blendedblue}{red!40!black}  % For College of Charleston (Maroon and White)
@@ -88,11 +88,11 @@
   \leavevmode%
   \hbox{%
   \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
-    \usebeamerfont{author in head/foot}\insertshortauthor
+    \usebeamerfont{author in head/foot}\insertshorttitle
 									 %\beamer@ifempty{\insertshortinstitute}{}{(\insertshortinstitute)}
   \end{beamercolorbox}%
   \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
-    \usebeamerfont{title in head/foot}\insertshorttitle
+    \usebeamerfont{title in head/foot}\insertsection
   \end{beamercolorbox}%
   \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
     \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
@@ -199,15 +199,16 @@
 					 College of Engineering \\ University of Kentucky\\ Lexington, KY, USA
 					 %[6em] \includegraphics[height=1.5cm,width=4cm]{figs/UNF_logo.png}
 					}
-\date[SC, CCEC, UNF, \mydate\today]{}
+\date[UNF, \mydate\today]{}
 
 %%%%%%%%%%% BEGIN TITLE PAGE %%%%%%%%%%%%%%%%%%
-\begin{withoutheadline}
+\section{@School of Computing, CCEC}
+%\begin{withoutheadline}
 \frame
 {
 	\titlepage
 }
-\end{withoutheadline}
+%\end{withoutheadline}
 %%%%%%%%%%%% END TITLE PAGE %%%%%%%%%%%%%%%%%%
 
 \section{Introduction}
