@@ -20,68 +20,7 @@
 }
 
 \frameT{Relations and Orderings}{
-  \begin{block}{Binary Relations}
-		%A binary relation $\preceq$ over $O$ 
-		$\preceq$
-		is a \tit{partial preorder} if it is reflexive and
-		transitive, a \tit{total preorder} if it is a partial preorder and total, 
-		a \tit{partial order} if it is a partial preorder and antisymmetric, and 
-		a \tit{total order} if it is a partial order and total.
-  \end{block}
-
-	\vspace{-0.3cm}
-
-	\begin{figure}[ht]
-	   \small
-	  \centering
-    \begin{subfigure}[b]{0.45\textwidth}
-	  	\centering
-		  \begin{tikzpicture}[->,>=stealth',node distance=1.5cm,main node/.style={circle,draw,font=\small}]
-		    \node[main node] (1) {$o_1$};
-				\node[main node] (2) [below left of=1] {$o_2$};
-		  	\node[main node] (3) [below right of=1] {$o_3$};
-		  	\node[main node] (4) [below right of=2] {$o_4$};
-		
-		    \path[every node/.style={font=\sffamily\small}]
-		      (4) edge (2)
-		      (4) edge (3)
-		      (2) edge (1)
-		      (3) edge (1)
-		      (4) edge (1)
-					(1) edge [loop above] (1)
-					(2) edge [loop left] (2)
-					(3) edge [loop right] (3)
-					(4) edge [loop below] (4);
-		  \end{tikzpicture}
-      \caption{partial (pre)order}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.45\textwidth}
-	  	\centering
-		  \begin{tikzpicture}[->,>=stealth',node distance=1cm,main node/.style={circle,draw,font=\small}]
-		    \node[main node] (1) {$o_1$};
-				\node[main node] (2) [below of=1] {$o_2$};
-		  	\node[main node] (3) [below of=2] {$o_3$};
-		  	\node[main node] (4) [below of=3] {$o_4$};
-		
-		    \path[every node/.style={font=\sffamily\small}]
-		      (4) edge (3)
-		      (4) edge [bend left] (2)
-		      (4) edge [bend left] (1)
-		      (3) edge (2)
-		      (3) edge [bend left] (1)
-		      (2) edge (1)
-					(1) edge [loop right] (1)
-					(2) edge [loop right] (2)
-					(3) edge [loop right] (3)
-					(4) edge [loop right] (4);
-		  \end{tikzpicture}
-      \caption{total (pre)order}
-    \end{subfigure}
-	\end{figure}
-}
-
-\frameT{Relations and Orderings}{
-  \begin{block}{Binary Relations}
+  \begin{block}{Orderings}
 		%A binary relation $\preceq$ over $O$ 
 		$\preceq$
 		is a \tit{partial preorder} if it is reflexive and
@@ -142,7 +81,68 @@
 }
 
 \frameT{Relations and Orderings}{
-  \begin{block}{Binary Relations}
+  \begin{block}{Orderings}
+		%A binary relation $\preceq$ over $O$ 
+		$\preceq$
+		is a \tit{partial preorder} if it is reflexive and
+		transitive, a \tit{total preorder} if it is a partial preorder and total, 
+		a \tit{partial order} if it is a partial preorder and antisymmetric, and 
+		a \tit{total order} if it is a partial order and total.
+  \end{block}
+
+	\vspace{-0.3cm}
+
+	\begin{figure}[ht]
+	   \small
+	  \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+	  	\centering
+		  \begin{tikzpicture}[->,>=stealth',node distance=1.5cm,main node/.style={circle,draw,font=\small}]
+		    \node[main node] (1) {$o_1$};
+				\node[main node] (2) [below left of=1] {$o_2$};
+		  	\node[main node] (3) [below right of=1] {$o_3$};
+		  	\node[main node] (4) [below right of=2] {$o_4$};
+		
+		    \path[every node/.style={font=\sffamily\small}]
+		      (4) edge (2)
+		      (4) edge (3)
+		      (2) edge (1)
+		      (3) edge (1)
+		      (4) edge (1)
+					(1) edge [loop above] (1)
+					(2) edge [loop left] (2)
+					(3) edge [loop right] (3)
+					(4) edge [loop below] (4);
+		  \end{tikzpicture}
+      \caption{partial order}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+	  	\centering
+		  \begin{tikzpicture}[->,>=stealth',node distance=1cm,main node/.style={circle,draw,font=\small}]
+		    \node[main node] (1) {$o_1$};
+				\node[main node] (2) [below of=1] {$o_2$};
+		  	\node[main node] (3) [below of=2] {$o_3$};
+		  	\node[main node] (4) [below of=3] {$o_4$};
+		
+		    \path[every node/.style={font=\sffamily\small}]
+		      (4) edge (3)
+		      (4) edge [bend left] (2)
+		      (4) edge [bend left] (1)
+		      (3) edge (2)
+		      (3) edge [bend left] (1)
+		      (2) edge (1)
+					(1) edge [loop right] (1)
+					(2) edge [loop right] (2)
+					(3) edge [loop right] (3)
+					(4) edge [loop right] (4);
+		  \end{tikzpicture}
+      \caption{total order}
+    \end{subfigure}
+	\end{figure}
+}
+
+\frameT{Relations and Orderings}{
+  \begin{block}{Preference Relations}
 		Let $\preceq$ be a preference relation that is a partial preorder over $O$.
 		We say that $o_2$ is \tit{weakly preferred} to $o_1$ if $o_1 \preceq o_2$,
 		that $o_2$ is \tit{strictly preferred} ($\prec$) to $o_1$ if $o_1 \preceq o_2$ and
@@ -196,7 +196,7 @@
 }
 
 \frameT{Relations and Orderings}{
-  \begin{block}{Binary Relations}
+  \begin{block}{Preference Relations}
 		Let $\preceq$ be a preference relation that is a partial preorder over $O$.
 		We say that $o_2$ is \tit{weakly preferred} to $o_1$ if $o_1 \preceq o_2$,
 		that $o_2$ is \tit{strictly preferred} ($\prec$) to $o_1$ if $o_1 \preceq o_2$ and
@@ -319,7 +319,7 @@
 		\item \tbf{Capacity}: \{2, 5, 7m\}.
 		\item \tbf{Color}: \{black, blue, gray, red, white\}.
 		\item \tbf{LuggageSize}: \{big, med, small\}.
-		\item \tbf{Make}: \{bmw, ford, honda, and vw\}.
+		\item \tbf{Make}: \{bmw, ford, honda, vw\}.
 		\item \tbf{Price}: \{low, med, high, vhigh\}.
 		\item \tbf{Safety}: \{low, med, high\}.
 	\end{enumerate}
@@ -348,9 +348,9 @@
 
 \frameT{Research Problems of Interest}{
 	\begin{enumerate}
-		\item Preference representation formalisms to model qualitative preferences
+		\item Preference representation formalisms to compactly model qualitative preferences
 					over combinatorial domains.
-		\item Preference learning methods to cast preferences of agents in a formalism.
+		\item Preference elicitation and learning methods to cast preferences of agents in a formalism.
 		\item Preference reasoning tasks:
 		\begin{itemize}
 			\item Dominance and optimization

@@ -30,15 +30,15 @@
 	\begin{enumerate}
 		\conti
 		\item A \tbf{P-tree} $T$ over $\CD(\cI)$
-					is a binary tree whose nodes, other than the leaves, are labeled with
+					is a binary tree, where non-leaf nodes are labeled with
 					propositional formulas over $\cL$.
-		\item Given an outcome $M \in \CD(\cI)$, the \tbf{leaf} $l_T(M)$
-					is the leaf reached by traversing the tree $T$ according to $M$.
-					When at a node $N$ labeled with $\varphi$, if $M\models \varphi$,
+		\item Given an outcome $o \in \CD(\cI)$, the \tbf{leaf} $l_T(o)$
+					is the leaf reached by traversing the tree $T$ according to $o$.
+					When at a node $N$ labeled with $\varphi$, if $o\models \varphi$,
 					we descend to the left child of $N$; otherwise, to the right.
-		\item For $M, M'\in \CD(\cI)$, we have $M\succ_T M'$ if $l_T(M) \succ_T l_T(M')$,
-					and $M \approx_T M'$ if $l_T(M)=l_T(M')$. Outcome $M$ is \tbf{optimal} if 
-					there exists no $M'$ such that $M' \succ_T M$.
+		\item For $o_1, o_2\in \CD(\cI)$, we have $o_1\succ_T o_2$ if $l_T(o_1) \succ_T l_T(o_2)$,
+					and $o_1 \approx_T o_2$ if $l_T(o_1)=l_T(o_2)$. Outcome $o_1$ is \tbf{optimal} if 
+					there exists no $o_2$ such that $o_2 \succ_T o_1$.
 	\end{enumerate}
 }
 
@@ -48,7 +48,7 @@
     \item \tbf{Capacity}($X_2$): \{2, 5, 7m\}.
     \item \tbf{Color}($X_3$): \{black, blue, gray, red, white\}.
     \item \tbf{LuggageSize}($X_4$): \{big, med, small\}.
-    \item \tbf{Make}($X_5$): \{bmw, ford, honda, and vw\}.
+    \item \tbf{Make}($X_5$): \{bmw, ford, honda, vw\}.
     \item \tbf{Price}($X_6$): \{low, med, high, vhigh\}.
     \item \tbf{Safety}($X_7$): \{low, med, high\}.
   \end{enumerate}
@@ -129,6 +129,45 @@
 	\footnotetext{
 		$\varphi=(x_{1,1} \land x_{3,5}) \lor (x_{1,2} \land x_{3,2})$.
 	}
+}
+
+\frameT{Compact Representation of P-trees}{
+	\begin{figure}
+	  \centering
+		\begin{subfigure}[b]{0.45\textwidth}
+	    \centering
+      \begin{tikzpicture}[->,>=stealth',
+	      level 1/.style={sibling distance=1.7cm, level distance=33pt},
+	      level 2/.style={sibling distance=1cm, level distance=27pt}
+	    ]
+        \node [main node,inner sep=4pt] (1){$\varphi$}
+          child {node [main node,inner sep=1pt] (2) {$x_{6,2}$}
+            child {node [rectangle,draw] (3) {}}
+            child {node [rectangle,draw] (4) {}}
+                            }
+          child {node [main node,inner sep=1pt] (5) {$x_{6,2}$}
+            child {node [rectangle,draw] (6) {}
+                                    }
+            child {node [rectangle,draw] (7) {}
+                                    }
+          };
+      \end{tikzpicture}
+			\caption{Full}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.25\textwidth}
+			\hspace{1cm}
+      \begin{tikzpicture}[->,>=stealth',
+        level 1/.style={sibling distance=1.7cm, level distance=33pt},
+        level 2/.style={sibling distance=1cm, level distance=27pt}]
+        \node [main node,inner sep=4pt] (1){$\varphi$}
+          child {node [main node,inner sep=1pt] (2) {$x_{6,2}$}
+                    child {node [rectangle] (4) {} edge from parent[draw=none]}
+                            };
+      \end{tikzpicture}
+			\caption{Compact}
+		\end{subfigure}
+	\caption{Compact P-trees}
+	\end{figure}
 }
 
 \frameT{Compact Representation of P-trees}{
@@ -290,7 +329,7 @@
 	\begin{figure}[ht!]
 	  \centering
 	    \includegraphics[width=0.4\textwidth]{figs/Cars/uiuptree.png}
-	  \caption{A UIUP PLP-tree}
+	  \caption{Unconditional Importance \& Unconditional Preference (UIUP) PLP-tree}
 	\end{figure}
 
 	According to this UIUP PLP-tree, \tit{Car1} is preferred to \tit{Car2}.
@@ -300,7 +339,7 @@
 	\begin{figure}[ht!]
 	  \centering
 	    \includegraphics[width=0.65\textwidth]{figs/Cars/uicptree.png}
-	  \caption{A UICP PLP-tree}
+	  \caption{Unconditional Importance \& Conditional Preference (UICP) PLP-tree}
 	\end{figure}
 
 	According to this UICP PLP-tree, \tit{Car2} is preferred to \tit{Car1}.
@@ -310,7 +349,7 @@
 	\begin{figure}[ht!]
 	  \centering
 	    \includegraphics[width=0.9\textwidth]{figs/Cars/ciuptree.png}
-	  \caption{A CIUP PLP-tree}
+	  \caption{Conditional Importance \& Unconditional Preference (CIUP) PLP-tree}
 	\end{figure}
 
 	According to this CICP PLP-tree, \tit{Car1} is preferred to \tit{Car2}.
@@ -320,7 +359,7 @@
 	\begin{figure}[ht!]
 	  \centering
 	    \includegraphics[width=0.9\textwidth]{figs/Cars/cicptree.png}
-	  \caption{A CICP PLP-tree}
+	  \caption{Conditional Importance \& Conditional Preference (CICP) PLP-tree}
 	\end{figure}
 
 	According to this CICP PLP-tree, \tit{Car1} is preferred to \tit{Car2}.
