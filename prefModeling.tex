@@ -1,3 +1,16 @@
+\frameT{Outline}{
+  \begin{enumerate}
+    \item The languages of P-trees, PLP-trees, and LP-trees
+    {\transparent{0.2} \item Learning of preference models (PLP-trees and P-forests)}
+    {\transparent{0.2} \item Reasoning with preferences:
+      \begin{itemize}
+        \item Computing winners and ``strong" outcomes when votes are LP-trees
+        \item Application in trip planning
+      \end{itemize}}
+    {\transparent{0.2} \item Future research directions}
+  \end{enumerate}
+}
+
 \frameT{Preference Trees}{
 	\begin{enumerate}
 		\item Let $\cI=\{X_1,\ldots,X_p\}$ be a set of attributes, and
@@ -29,11 +42,11 @@
 	\end{enumerate}
 }
 
-\frameT{Example: The Car Domain}{
+\frameT{Example: The Cars Domain}{
   \begin{enumerate}
     \item \tbf{BodyType}($X_1$): \{mvan($x_{1,1}$), sedan($x_{1,2}$), sport($x_{1,3}$), suv($x_{1,4}$)\}.
     \item \tbf{Capacity}($X_2$): \{2, 5, 7m\}.
-    \item \tbf{Color}($X_3$): \{black, blue, grey, red, white\}.
+    \item \tbf{Color}($X_3$): \{black, blue, gray, red, white\}.
     \item \tbf{LuggageSize}($X_4$): \{big, med, small\}.
     \item \tbf{Make}($X_5$): \{bmw, ford, honda, and vw\}.
     \item \tbf{Price}($X_6$): \{low, med, high, vhigh\}.
@@ -44,7 +57,7 @@
 \frameT{Example: Preference Trees over Cars}{
 	\begin{center}
     \tbf{BodyType}($X_1$): \{mvan($x_{1,1}$), sedan($x_{1,2}$), sport($x_{1,3}$), suv($x_{1,4}$)\}.\\
-    \tbf{Color}($X_3$): \{black, blue, grey, red, white\}.\\
+    \tbf{Color}($X_3$): \{black, blue, gray, red, white\}.\\
     \tbf{Price}($X_6$): \{low, med, high, vhigh\}.
 	\end{center}
 
@@ -68,19 +81,19 @@
                                     }
           };
       \end{tikzpicture}
-	  \caption{A P-tree over vacations\footnotemark}
+	  \caption{A P-tree over cars\footnotemark}
 	\end{figure}
 
 	\footnotetext{
-		$\varphi=(x_{1,1} \land x_{3,3}) \lor (x_{1,2} \land x_{3,2})$.
+		$\varphi=(x_{1,1} \land x_{3,5}) \lor (x_{1,2} \land x_{3,2})$.
 	}
 }
 
-\frameT{Example: Preferences over Vacations}{
+\frameT{Example: Preferences over Cars}{
 	\addtocounter{footnote}{-1}
 	\begin{center}
     \tbf{BodyType}($X_1$): \{mvan($x_{1,1}$), sedan($x_{1,2}$), sport($x_{1,3}$), suv($x_{1,4}$)\}.\\
-    \tbf{Color}($X_3$): \{black, blue, grey, red, white\}.\\
+    \tbf{Color}($X_3$): \{black, blue, gray, red, white\}.\\
     \tbf{Price}($X_6$): \{low, med, high, vhigh\}.
 	\end{center}
 
@@ -94,8 +107,8 @@
 	    ]
         \node [main node,inner sep=4pt] (1){$\varphi$}
           child [red] {node [main node,inner sep=1pt,black] (2) {$x_{6,2}$}
-            child [black] {node [rectangle,draw] (3) {}}
-            child {node [rectangle,draw,fill] (4) {}}
+            child {node [rectangle,draw,fill] (3) {}}
+            child [black] {node [rectangle,draw] (4) {}}
                             }
           child [green] {node [main node,inner sep=1pt,black] (5) {$x_{6,2}$}
             child {node [rectangle,draw,fill] (6) {}
@@ -104,19 +117,17 @@
                                     }
           };
       \end{tikzpicture}
-	  \caption{A P-tree over vacations\footnotemark}
+	  \caption{A P-tree over cars\footnotemark}
 	\end{figure}
 
-\vspace{-0.5cm}
+\vspace{-1cm}
 
-	Preferences:
-	\vspace{-0.4cm}
 	\begin{center}
-		$\textcolor{red}{\neg x_1 \neg x_2x_3\neg x_4} \succ \textcolor{green}{x_1 \neg x_2x_3x_4}$
+		$\textcolor{red}{Car2} \succ \textcolor{green}{Car1}$
 	\end{center}
 
 	\footnotetext{
-		$\varphi=(x_{1,1} \land x_{3,3}) \lor (x_{1,2} \land x_{3,2})$.
+		$\varphi=(x_{1,1} \land x_{3,5}) \lor (x_{1,2} \land x_{3,2})$.
 	}
 }
 
@@ -203,7 +214,7 @@
 }
 
 \frameT{Compact Representation of P-trees}{
-	A \tit{compact P-tree} over $\CD(\cI)$ is a tree where
+	A \tit{compact P-tree} over $\CD(\cI)$ is a binary tree where
 	\begin{enumerate}
 		\setlength\itemsep{0em}
 		\item every node is labeled with a Boolean formula over $\cI$, and
@@ -222,7 +233,9 @@
 
 \frameT{Relative Expressivity of Preference Languages}{
 	\begin{center}
-		Poss-theories = ASO-rules $\subsetsim$ 
+		Poss-theories = ASO-rules 
+		%$\subsetsim$ 
+		$\subset$
 			\dual{LP-trees/\dual{$\cap$/\dual{PLP-trees/\dual{$\cap$/P-trees}}}}
 			$\subset$ ASO-theories
 	\end{center}
@@ -262,10 +275,10 @@
 }
 
 \frameT{Partial Lexicographic Preference Trees (PLP-Tree)}{
-	A \tit{PLP-tree} over $\CD(\cI)$ is a labeled tree, where
+	A \tit{PLP-tree} over $\CD(\cI)$ is a tree, where
 	\begin{enumerate}
 		\setlength\itemsep{0em}
-		\item every node $t$ is labeled with a attribute $\Attr(t)$ in $\cI$ and
+		\item every node $t$ is labeled with an attribute $\Attr(t)$ in $\cI$ and
 					a conditional preference table $\CPT(t)$,
 	  \item every non-leaf node $t$ has either one unlabeled outgoing edge or multiple
 					outgoing edges labeled, each labeled by some value in $\Dom(\Attr(t))$, and
@@ -311,4 +324,14 @@
 	\end{figure}
 
 	According to this CICP PLP-tree, \tit{Car1} is preferred to \tit{Car2}.
+}
+
+\frameT{Lexicographic Preference Trees (LP-Trees)}
+{
+  \begin{enumerate}
+    \item An \tit{LP-tree} $\cL$ over $\CD(\cI)$ is a PLP-tree, where
+    \begin{itemize}
+      \item each attribute appears \tbf{exactly once} on every path from the root to a leaf.
+    \end{itemize}
+  \end{enumerate}
 }

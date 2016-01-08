@@ -1,14 +1,14 @@
-\frameT{Lexicographic Preference Trees (LP-Trees)}
-{
-	\begin{enumerate}
-		\item An \tit{LP tree} $\cL$ over 
-					$\cI=\{X_1,\ldots,X_p\}$ is a (\tit{binary}) tree, where
-		\begin{itemize}
-			\item each node $t$ in $\cL$ is labeled by an issue from $\cI$
-						and with \tit{preference information}, and
-			\item each issue appears \tbf{exactly once} on every path from the root to a leaf.
-		\end{itemize}
-	\end{enumerate}
+\frameT{Outline}{
+  \begin{enumerate}
+    {\transparent{0.2} \item The languages of P-trees, PLP-trees, and LP-trees}
+    {\transparent{0.2} \item Learning of preference models (PLP-trees and P-forests)}
+    \item Reasoning with preferences:
+      \begin{itemize}
+        \item Computing winners and ``strong" outcomes when votes are LP-trees
+        {\transparent{0.2} \item Application in trip planning}
+      \end{itemize}
+    {\transparent{0.2} \item Future research directions}
+  \end{enumerate}
 }
 
 \frameT{Positional Scoring Rules}
@@ -29,8 +29,8 @@
 {
   \begin{block}{The Evaluation Problem}
 		Let $r$ be a positional scoring rule with a scoring 
-		vector $w$, $\cC$ a class of LP trees.
-		Given a $\cC$-profile $P$ of $n$ LP trees over $p$ issues and a 
+		vector $w$, $\cC$ a class of LP-trees.
+		Given a $\cC$-profile $P$ of $n$ LP-trees over $p$ attributes and a 
 		positive integer $R$,
 		the \tit{evaluation} problem is to decide whether 
 		there exists an alternative $o \in \mathcal{X}$ such that $s_{{w}}(o,P)
@@ -41,8 +41,8 @@
 
   \begin{block}{The Winner Problem}
 		Let $r$ be a positional scoring rule with a scoring 
-		vector $w$, $\cC$ a class of LP trees.
-		Given a $\cC$-profile $P$ of $n$ LP trees over $p$ issues,
+		vector $w$, $\cC$ a class of LP-trees.
+		Given a $\cC$-profile $P$ of $n$ LP-trees over $p$ attributes,
 		the \tit{winner} problem is to compute an alternative
 		$o \in \cX$ with the maximum score $s_w(o,P)$.
   \end{block}
@@ -194,8 +194,8 @@
 	\begin{itemize}
 		\item To experiment with LP profiles, we developed methods to randomly generate
 					\tit{encodings} of
-          a special type of CI-CP LP tree of size linear in the number of
-          issues
+          a special type of CI-CP LP-tree of size linear in the number of
+          attributes
 	\end{itemize}
 
 	\begin{figure}
@@ -203,7 +203,7 @@
 		\centering
 		\includegraphics[width=0.4\textwidth]{figs/LPTrees/simple_LP_tree.png}
 		\vspace{-0.3cm}
-		\caption{Random LP tree}
+		\caption{Random LP-tree}
 	\end{figure}
 }
 
@@ -214,7 +214,7 @@
     \begin{subfigure}[b]{0.45\textwidth}
 			\centering
 			\includegraphics[width=0.95\textwidth]{figs/LPTrees/win/expAppFISCICP.pdf}
-			\caption{Fixed \#issues (10)}
+			\caption{Fixed \#attributes (10)}
 		\end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
 			\centering
@@ -237,7 +237,7 @@
     \begin{subfigure}[b]{0.45\textwidth}
 			\centering
 			\includegraphics[width=0.95\textwidth]{figs/LPTrees/win/2kAppFISCICP.pdf}
-			\caption{Fixed \#issues (10)}
+			\caption{Fixed \#attributes (10)}
 		\end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
 			\centering
@@ -255,7 +255,7 @@
     \begin{subfigure}[b]{0.45\textwidth}
 			\centering
 			\includegraphics[width=0.95\textwidth]{figs/LPTrees/win/bordaFISCICP.pdf}
-			\caption{Fixed \#issues (10)}
+			\caption{Fixed \#attributes (10)}
 		\end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
 			\centering
@@ -265,6 +265,19 @@
 
 		\caption{Solving the winner problem}
 	\end{figure}
+}
+
+\frameT{Outline}{
+  \begin{enumerate}
+    {\transparent{0.2} \item The languages of P-trees, PLP-trees, and LP-trees}
+    {\transparent{0.2} \item Learning of preference models (PLP-trees and P-forests)}
+    \item Reasoning with preferences:
+      \begin{itemize}
+        {\transparent{0.2} \item Computing winners and ``strong" outcomes when votes are LP-trees}
+        \item Application in trip planning
+      \end{itemize}
+    {\transparent{0.2} \item Future research directions}
+  \end{enumerate}
 }
 
 \frameT{Personalization in Trip Planning}{

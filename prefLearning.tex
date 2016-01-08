@@ -1,4 +1,39 @@
-\frameT{Complexity Results} {
+\frameT{Outline}{
+  \begin{enumerate}
+    {\transparent{0.2} \item The languages of P-trees, PLP-trees, and LP-trees}
+    \item Learning of preference models (PLP-trees and P-forests)
+    {\transparent{0.2} \item Reasoning with preferences:
+      \begin{itemize}
+        \item Computing winners and ``strong" outcomes when votes are LP-trees
+        \item Application in trip planning
+      \end{itemize}}
+    {\transparent{0.2} \item Future research directions}
+  \end{enumerate}
+}
+
+\frameT{Learning Problems on PLP-trees}{
+	\begin{block}{Consistent Learning (\tsc{ConsLearn})}
+		Given an example set $\cE$, decide 
+		whether there exists a PLP-tree $T$ (of a particular type) such that $T$ 
+		is consistent with $\cE$.
+	\end{block}
+
+	\begin{block}{Small Learning (\tsc{SmallLearn})}
+		Given an example set $\cE$
+		and a positive integer $l$ ($l \leq |\cE|$), decide whether there 
+		exists a PLP-tree $T$ (of a particular type) such that $T$ is consistent 
+		with $\cE$ and $|T| \leq l$.
+	\end{block}
+
+	\begin{block}{Maixmal Learning (\tsc{MaxLearn})}
+		Given an example set $\cE$ and a 
+		positive integer $k$ ($k \leq m$), decide whether there exists a PLP-tree 
+		$T$ (of a particular type) such that $T$ satisfies at least $k$ examples 
+		in $\cE$.
+	\end{block}
+}
+
+\frameT{Complexity Results on PLP-trees} {
   \begin{figure}[!ht]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
@@ -48,7 +83,7 @@
             Learning Lexicographic Strategies}, 2006.}
 }
 
-\frameT{Experimental Results on Trees}{
+\frameT{Experimental Results on PLP-trees}{
   \begin{figure}[ht!]
     \centering
       \includegraphics[width=0.7\textwidth]{figs/PrefLearnResults/Trees/X_MH/CarEvaluation.png}
@@ -56,7 +91,7 @@
   \end{figure}
 }
 
-\frameT{Experimental Results on Trees}{
+\frameT{Experimental Results on PLP-trees}{
   \begin{figure}[ht!]
     \centering
       \includegraphics[width=0.7\textwidth]{figs/PrefLearnResults/Trees/MH/CarEvaluation.png}
@@ -64,7 +99,7 @@
   \end{figure}
 }
 
-\frameT{Preference Forests}{
+\frameT{Preference Forests (P-Forests)}{
 	\begin{enumerate}
 		\item A \tit{preference forest} $F$ is a collection of PLP-trees
 					$F = \{T_1,\ldots,T_n\}$.
@@ -80,7 +115,7 @@
 	\end{enumerate}
 }
 
-\frameT{Experimental Results on Forests}{
+\frameT{Experimental Results on P-Forests}{
   \begin{figure}[ht!]
     \centering
       \includegraphics[width=0.7\textwidth]{figs/PrefLearnResults/Forests/X_MH/CarEvaluation.png}
@@ -88,7 +123,7 @@
   \end{figure}
 }
 
-\frameT{Experimental Results on Forests}{
+\frameT{Experimental Results on P-Forests}{
   \begin{figure}[ht!]
     \centering
       \includegraphics[width=0.7\textwidth]{figs/PrefLearnResults/Forests/MH/CarEvaluation.png}
