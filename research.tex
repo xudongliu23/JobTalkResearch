@@ -56,7 +56,9 @@
 \tikzset{
   main node/.style={circle,draw,font=\small},
   rectangle/.style={font=\small},
-	empty/.style={edge from parent/.style={}}
+	empty/.style={edge from parent/.style={}},
+	subtree/.style  = {isosceles triangle, draw=black, align=center, minimum height=0.4cm, 
+		minimum width=0.8cm, shape border rotate=90, anchor=north}
 }
 
 \setlength{\mathindent}{0pt}
@@ -198,7 +200,7 @@
 
 \begin{document}
 
-\title[Preferences]
+\title[Preference Trees]
 	{Preference Trees over Combinatorial Domains}
 \author[Xudong Liu]{\linebreak \linebreak Xudong Liu}
 \institute{Ph.D. Candidate \\ Advisor: Dr. Miroslaw Truszczynski \linebreak \linebreak
@@ -235,11 +237,17 @@
 \section{Preference Learning}
 \input{prefLearning}
 
-\section{Preference Reasoning on LP-trees}
+\section{Preference Reasoning}
 \input{prefReasoning}
 
 \section{Future Research Scenarios}
 \input{future}
+
+\section{Publications}
+\input{mypubs}
+
+\section{Related Work}
+\input{relwork}
 
 \section{Conclusion}
 \input{conclude}

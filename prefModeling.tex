@@ -4,6 +4,7 @@
     {\transparent{0.2} \item Learning of preference models (PLP-trees and P-forests)}
     {\transparent{0.2} \item Reasoning with preferences:
       \begin{itemize}
+        \item Preference optimization in case of P-trees
         \item Computing winners and ``strong" outcomes when votes are LP-trees
         \item Application in trip planning
       \end{itemize}}
@@ -11,35 +12,109 @@
   \end{enumerate}
 }
 
-\frameT{Preference Trees}{
-	\begin{enumerate}
-		\item Let $\cI=\{X_1,\ldots,X_p\}$ be a set of attributes, and
-					$D(\cI)=\{\Dom(X_1),\ldots,\Dom(X_p)\}$ a set of finite domains for $\cI$.
-		\item	A \tit{literal} is an assignment to an attribute.  We denote by
-					$X_i:=x_{i,j}$ the literal that assigns value $x_{i,j} \in \Dom(X_i)$
-					to $X_i$. When no confusion, we write $x_{i,j}$, instead of
-					$X_i:=x_{i,j}$, as a literal. 
-					We then denote by $\cL=\{x_{i,j} \in \Dom(X_i): X_i \in \cI\}$ the set of
-					literals given $\cI$ and $D(\cI)$.
-		\item The combinatorial domain $\CD(\cI)$ is defined as earlier.
-		\seti
-	\end{enumerate}
+%\frameT{Preference Trees}{
+%	\begin{enumerate}
+%		\item Let $\cI=\{X_1,\ldots,X_p\}$ be a set of attributes, and
+%					$D(\cI)=\{\Dom(X_1),\ldots,\Dom(X_p)\}$ a set of finite domains for $\cI$.
+%		\item	A \tit{literal} is an assignment to an attribute.  We denote by
+%					$X_i:=x_{i,j}$ the literal that assigns value $x_{i,j} \in \Dom(X_i)$
+%					to $X_i$. When no confusion, we write $x_{i,j}$, instead of
+%					$X_i:=x_{i,j}$, as a literal. 
+%					We then denote by $\cL=\{x_{i,j} \in \Dom(X_i): X_i \in \cI\}$ the set of
+%					literals given $\cI$ and $D(\cI)$.
+%		\item The combinatorial domain $\CD(\cI)$ is defined as earlier.
+%		\seti
+%	\end{enumerate}
+%}
+%
+%\frameT{Preference Trees}{
+%	\begin{enumerate}
+%		\conti
+%		\item A \tbf{P-tree} $T$ over $\CD(\cI)$
+%					is a binary tree, where non-leaf nodes are labeled with
+%					propositional formulas over $\cL$.
+%		\item Given an outcome $o \in \CD(\cI)$, the \tbf{leaf} $l_T(o)$
+%					is the leaf reached by traversing the tree $T$ according to $o$.
+%					When at a node $N$ labeled with $\varphi$, if $o\models \varphi$,
+%					we descend to the left child of $N$; otherwise, to the right.
+%		\item For $o_1, o_2\in \CD(\cI)$, we have $o_1\succ_T o_2$ if $l_T(o_1) \succ_T l_T(o_2)$,
+%					and $o_1 \approx_T o_2$ if $l_T(o_1)=l_T(o_2)$. Outcome $o_1$ is \tbf{optimal} if 
+%					there exists no $o_2$ such that $o_2 \succ_T o_1$.
+%	\end{enumerate}
+%}
+
+\frameT{Preference Trees (P-Trees)}{
+	Let $\varphi$, $\psi$, and $\pi$ be propositional formulas over the
+	set $\cL$ of literals that are values from $\bigcup_{X_i \in V} \Dom(X_i)$.
+
+	\begin{figure}[!ht]
+	  \centering
+      \begin{tikzpicture}[->,>=stealth',
+	      level 1/.style={sibling distance=1.7cm, level distance=33pt},
+	      level 2/.style={sibling distance=1cm, level distance=27pt}
+	    ]
+        \node [main node,inner sep=0pt,minimum size=0.8cm] (1){$\varphi$}
+          child {node [main node,inner sep=0pt,minimum size=0.8cm] (2) {$\psi$}
+            child {node [rectangle,draw] (3) {}}
+            child {node [rectangle,draw] (4) {}}
+                            }
+          child {node [main node,inner sep=0pt,minimum size=0.8cm] (5) {$\pi$}
+            child {node [rectangle,draw] (6) {}
+                                    }
+            child {node [rectangle,draw] (7) {}
+                                    }
+          };
+      \end{tikzpicture}
+	  \caption{A P-tree}
+	\end{figure}
+
+	\vspace{-0.5cm}
+
+	\begin{center}
+		$\varphi \land \psi \succ \varphi \land \neg \psi \succ \neg \varphi \land \pi
+			\succ \neg \varphi \land \neg \pi$.
+	\end{center}
+
+	\begin{center}
+		{\transparent{0} Total preorder}
+	\end{center}
 }
 
-\frameT{Preference Trees}{
-	\begin{enumerate}
-		\conti
-		\item A \tbf{P-tree} $T$ over $\CD(\cI)$
-					is a binary tree, where non-leaf nodes are labeled with
-					propositional formulas over $\cL$.
-		\item Given an outcome $o \in \CD(\cI)$, the \tbf{leaf} $l_T(o)$
-					is the leaf reached by traversing the tree $T$ according to $o$.
-					When at a node $N$ labeled with $\varphi$, if $o\models \varphi$,
-					we descend to the left child of $N$; otherwise, to the right.
-		\item For $o_1, o_2\in \CD(\cI)$, we have $o_1\succ_T o_2$ if $l_T(o_1) \succ_T l_T(o_2)$,
-					and $o_1 \approx_T o_2$ if $l_T(o_1)=l_T(o_2)$. Outcome $o_1$ is \tbf{optimal} if 
-					there exists no $o_2$ such that $o_2 \succ_T o_1$.
-	\end{enumerate}
+\frameT{Preference Trees (P-Trees)}{
+	Let $\varphi$, $\psi$, and $\pi$ be propositional formulas over the
+	set $\cL$ of literals that are values from $\bigcup_{X_i \in V} \Dom(X_i)$.
+
+	\begin{figure}[!ht]
+	  \centering
+      \begin{tikzpicture}[->,>=stealth',
+	      level 1/.style={sibling distance=1.7cm, level distance=33pt},
+	      level 2/.style={sibling distance=1cm, level distance=27pt}
+	    ]
+        \node [main node,inner sep=0pt,minimum size=0.8cm] (1){$\varphi$}
+          child {node [main node,inner sep=0pt,minimum size=0.8cm] (2) {$\psi$}
+            child {node [rectangle,draw] (3) {}}
+            child {node [rectangle,draw] (4) {}}
+                            }
+          child {node [main node,inner sep=0pt,minimum size=0.8cm] (5) {$\pi$}
+            child {node [rectangle,draw] (6) {}
+                                    }
+            child {node [rectangle,draw] (7) {}
+                                    }
+          };
+      \end{tikzpicture}
+	  \caption{A P-tree}
+	\end{figure}
+
+	\vspace{-0.5cm}
+
+	\begin{center}
+		$\varphi \land \psi \succ \varphi \land \neg \psi \succ \neg \varphi \land \pi
+			\succ \neg \varphi \land \neg \pi$.
+	\end{center}
+
+	\begin{center}
+		Total preorder
+	\end{center}
 }
 
 \frameT{Example: The Cars Domain}{
@@ -258,15 +333,67 @@
 		\setlength\itemsep{0em}
 		\item every node is labeled with a Boolean formula over $\cI$, and
 	  \item every non-leaf node $t$ labeled with $\varphi$ has either
-	        two outgoing edges (Figure (a)), or one 
-	    		outgoing edge pointing left (Figure (b)),
-					right (Figure (c)), or straight-down (Figure (d)).
+	        two outgoing edges (\figref{compact1}), or one 
+	    		outgoing edge pointing straight-down (\figref{compact4}),
+					left (\figref{compact3}), or right (\figref{compact2}).
 	\end{enumerate}
 	
-	\begin{figure}[ht!]
-	  \centering
-	    \includegraphics[width=0.9\textwidth]{figs/PTrees/ptrees.png}
+	%\begin{figure}[ht!]
+	%  \centering
+	%    \includegraphics[width=0.9\textwidth]{figs/PTrees/ptrees.png}
+	%  \caption{Compact P-trees}
+	%\end{figure}
+
+	\begin{figure}[!ht]
+		\centering
+	  \begin{subfigure}[b]{0.3\textwidth}
+			\centering
+		  \begin{tikzpicture}[->,>=stealth',
+		    level1/.style={sibling distance=1.5cm}, level distance=35pt]
+		    \node [main node,inner sep=3pt,label={[xshift=0cm, yshift=0cm]$t$}] (1){$\varphi$}
+					child [edge from parent path ={(\tikzparentnode.-140) -- (\tikzchildnode.north)}] {
+						node [subtree,yshift=0.4cm] (2) {}}
+					child [edge from parent path ={(\tikzparentnode.-40) -- (\tikzchildnode.north)}] {
+						node [subtree,yshift=0.4cm] (3) {}};
+		  \end{tikzpicture}
+			\caption{\label{fig:compact1}}
+		\end{subfigure}%
+	  \begin{subfigure}[b]{0.2\textwidth}
+			\centering
+		  \begin{tikzpicture}[->,>=stealth',
+		    level1/.style={sibling distance=1.5cm}, level distance=35pt]
+			    \node [main node,inner sep=3pt,label={[xshift=0cm, yshift=0cm]$t$}] (1){$\varphi$}
+						child {node [subtree,yshift=0.4cm] (2) {}};
+		  \end{tikzpicture}
+			\caption{\label{fig:compact2}}
+		\end{subfigure}%
+	  \begin{subfigure}[b]{0.2\textwidth}
+			\centering
+			  \begin{tikzpicture}[->,>=stealth',
+			    level1/.style={sibling distance=1.5cm}, level distance=35pt]
+			    \node [main node,inner sep=3pt,label={[xshift=0cm, yshift=0cm]$t$}] (1){$\varphi$}
+						child [edge from parent path ={(\tikzparentnode.-140) -- (\tikzchildnode.north)}] {
+							node [subtree,yshift=0.4cm] (2) {}}
+		      		child {node [rectangle] (3) {} edge from parent[draw=none]
+			      };
+			  \end{tikzpicture}
+				\caption{\label{fig:compact3}}
+		\end{subfigure}%
+	  \begin{subfigure}[b]{0.2\textwidth}
+			\centering
+		  \begin{tikzpicture}[->,>=stealth',
+		    level1/.style={sibling distance=1.5cm}, level distance=35pt]
+			    \node [main node,inner sep=3pt,label={[xshift=0cm, yshift=0cm]$t$}] (1){$\varphi$}
+		      	child {node [rectangle] (2) {} edge from parent[draw=none]
+			      }
+						child [edge from parent path ={(\tikzparentnode.-40) -- (\tikzchildnode.north)}] {
+							node [subtree,yshift=0.4cm] (2) {}};
+		  \end{tikzpicture}
+			\caption{\label{fig:compact4}}
+		\end{subfigure}
 	  \caption{Compact P-trees}
+	%\vspace{-0.2cm}
+	  \label{fig:compact}
 	\end{figure}
 }
 
@@ -313,64 +440,297 @@
 %	\end{figure}
 %}
 
-\frameT{Computational Complexity Results}{
-	\begin{enumerate}
-		\item {\sc DomTest}: is it that $o \succeq_T o'$ in P-tree $T$?\\
-		\item {\sc OptTest}: is outcome $o$ optimal w.r.t $T$?\\
-		\item {\sc OptProp}: is there an optimal outcome $o$ w.r.t $T$ st $o \models \alpha$?
-	\end{enumerate}
-}
+%\frameT{Computational Complexity Results}{
+%	Dominance-testing ({\sc DomTest}): $o_1 \succ_T o_2$?\\
+%	Optimality-testing ({\sc OptTest}): $o$ optimal w.r.t $T$?\\
+%	Optimality-with-property ({\sc OptProp}): is there optimal $o$ 
+%	with property $\alpha$?
+%
+%	\begin{enumerate}
+%		\item {\sc DomTest}$\;\in P$
+%		\item {\sc OptTest}$\;\in \coNP$-complete:
+%			\begin{itemize}
+%				\item The complement problem is reduced from the SAT problem.
+%			\end{itemize}
+%		\item {\sc OptProp}$\;\in \deltap{2}$-complete:
+%			\begin{itemize}
+%				\item The problem is reduced from the Maximum Satisfying Assignment (MSA) problem. 
+%			\end{itemize}
+%	\end{enumerate}
+%}
+
+%\frameT{Partial Lexicographic Preference Trees (PLP-Tree)}{
+%	A \tit{PLP-tree} over $\CD(\cI)$ is a tree, where
+%	\begin{enumerate}
+%		\setlength\itemsep{0em}
+%		\item every node $t$ is labeled with an attribute $\Attr(t)$ in $\cI$ and
+%					a conditional preference table $\CPT(t)$,
+%	  \item every non-leaf node $t$ has either one unlabeled outgoing edge or multiple
+%					outgoing edges labeled, each labeled by some value in $\Dom(\Attr(t))$, and
+%		\item every attribute appears \tit{at most} once on every branch.
+%	\end{enumerate}
+%}
 
 \frameT{Partial Lexicographic Preference Trees (PLP-Tree)}{
-	A \tit{PLP-tree} over $\CD(\cI)$ is a tree, where
-	\begin{enumerate}
-		\setlength\itemsep{0em}
-		\item every node $t$ is labeled with an attribute $\Attr(t)$ in $\cI$ and
-					a conditional preference table $\CPT(t)$,
-	  \item every non-leaf node $t$ has either one unlabeled outgoing edge or multiple
-					outgoing edges labeled, each labeled by some value in $\Dom(\Attr(t))$, and
-		\item every attribute appears \tit{at most} once on every branch.
-	\end{enumerate}
-}
-
-\frameT{Partial Lexicographic Preference Trees (PLP-Tree)}{
-	\begin{figure}[ht!]
+	\begin{figure}
 	  \centering
-	    \includegraphics[width=0.4\textwidth]{figs/Cars/uiuptree.png}
-	  \caption{Unconditional Importance \& Unconditional Preference (UIUP) PLP-tree}
-	\end{figure}
+		\begin{subfigure}[b]{0.65\textwidth}
+	    \centering
+      \begin{tikzpicture}[->,>=stealth',
+	      level 1/.style={sibling distance=2cm, level distance=33pt},
+	      level 2/.style={sibling distance=0.7cm, level distance=27pt}
+	    ]
+        \node [main node,inner sep=2pt] (1){S}
+          child {node [main node,inner sep=2pt] (2) {C}
+            child {node [rectangle,draw] (3) {} edge from parent node[left]  {\tiny{5}}}
+            child {node [rectangle,draw] (4) {} edge from parent node[left]  {\tiny{7}}}
+            child {node [rectangle,draw] (5) {} edge from parent node[right] {\tiny{2}}}
+          edge from parent node[left] {\small{h}}}
+          child {node [main node,inner sep=2pt] (6) {C}
+            child {node [rectangle,draw] (7) {} edge from parent node[left]  {\tiny{5}}}
+            child {node [rectangle,draw] (8) {} edge from parent node[left]  {\tiny{7}}}
+            child {node [rectangle,draw] (9) {} edge from parent node[right] {\tiny{2}}}
+          edge from parent node[left] {\small{m}}}
+          child {node [main node,inner sep=2pt] (10) {C}
+            child {node [rectangle,draw] (11) {} edge from parent node[left]  {\tiny{5}}}
+            child {node [rectangle,draw] (12) {} edge from parent node[left]  {\tiny{7}}}
+            child {node [rectangle,draw] (13) {} edge from parent node[right] {\tiny{2}}}
+          edge from parent node[right] {\small{l}}};
+      \end{tikzpicture}
+			\caption{Full}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.25\textwidth}
+			\hspace{1cm}
+      \begin{tikzpicture}[->,>=stealth',
+	      level 1/.style={sibling distance=2cm, level distance=33pt},
+	      level 2/.style={sibling distance=0.7cm, level distance=27pt}
+	    ]
+	  	      
+	  	  \node[main node,inner sep=3pt] (1) {S};
+	  	  \node[rectangle,draw,inner sep=2pt] at (1,0) {$h\!\! >\!\! m\!\! >\!\! l$};
+	
+	  	  \node[main node,inner sep=3pt] (2) [below of=1] {C};
+	  	  \node[rectangle,draw,inner sep=2pt] at (1,-1) {$5 \!\!>\!\! 7\!\!>\!\! 2$};
+	  	
+	  	  \node[rectangle] (3) [below of=2] {};
 
-	According to this UIUP PLP-tree, \tit{Car1} is preferred to \tit{Car2}.
+	  	  \path[every node/.style={font=\sffamily\small}]
+	  	    (1) edge (2);
+	  	\end{tikzpicture}
+			\caption{Compact}
+		\end{subfigure}
+	\caption{Unconditional Importance \& Unconditional Preference (UIUP)}
+	\end{figure}
 }
 
 \frameT{Partial Lexicographic Preference Trees (PLP-Tree)}{
-	\begin{figure}[ht!]
+	\begin{figure}
 	  \centering
-	    \includegraphics[width=0.65\textwidth]{figs/Cars/uicptree.png}
-	  \caption{Unconditional Importance \& Conditional Preference (UICP) PLP-tree}
-	\end{figure}
+		\begin{subfigure}[b]{0.65\textwidth}
+	    \centering
+      \begin{tikzpicture}[->,>=stealth',
+	      level 1/.style={sibling distance=2cm, level distance=33pt},
+	      level 2/.style={sibling distance=0.7cm, level distance=27pt}
+	    ]
+        \node [main node,inner sep=3pt] (1){S}
+          child {node [main node,inner sep=2pt] (2) {C}
+            child {node [rectangle,draw] (3) {} edge from parent node[left]  {\tiny{5}}}
+            child {node [rectangle,draw] (4) {} edge from parent node[left]  {\tiny{7}}}
+            child {node [rectangle,draw] (5) {} edge from parent node[right] {\tiny{2}}}
+          edge from parent node[left] {\small{h}}}
+          child {node [main node,inner sep=2pt] (6) {C}
+            child {node [rectangle,draw] (7) {} edge from parent node[left]  {\tiny{7}}}
+            child {node [rectangle,draw] (8) {} edge from parent node[left]  {\tiny{5}}}
+            child {node [rectangle,draw] (9) {} edge from parent node[right] {\tiny{2}}}
+          edge from parent node[left] {\small{m}}}
+          child {node [main node,inner sep=2pt] (10) {C}
+            child {node [rectangle,draw] (11) {} edge from parent node[left]  {\tiny{2}}}
+            child {node [rectangle,draw] (12) {} edge from parent node[left]  {\tiny{5}}}
+            child {node [rectangle,draw] (13) {} edge from parent node[right] {\tiny{7}}}
+          edge from parent node[right] {\small{l}}};
+      \end{tikzpicture}
+			\caption{Full}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.25\textwidth}
+			\hspace{1cm}
+      \begin{tikzpicture}[->,>=stealth',
+	      level 1/.style={sibling distance=2cm, level distance=33pt},
+	      level 2/.style={sibling distance=0.7cm, level distance=27pt}
+	    ]
+	  	      
+	  	  \node[main node,inner sep=3pt] (1) {S};
+	  	  \node[rectangle,draw,inner sep=2pt] at (1,0) {$h\!\! >\!\! m\!\! >\!\! l$};
+	
+	  	  \node[main node,inner sep=3pt] (2) [below of=1] {C};
+	    	\node[rectangle split, rectangle split parts=3, draw,inner sep=2pt,font=\sffamily\small] at (1.2,-1.3)
+	    	    {
+							$h\!:\!5 \!\!>\!\! 7\!\!>\!\! 2$
+	    	      \nodepart{second}
+							$m\!:\!7 \!\!>\!\! 5\!\!>\!\! 2$
+	    	      \nodepart{third}
+							$l\!:\!2 \!\!>\!\! 5\!\!>\!\! 7$
+	    	    };
+	  	
+	  	  \node[rectangle] (3) [below of=2] {};
 
-	According to this UICP PLP-tree, \tit{Car2} is preferred to \tit{Car1}.
+	  	  \path[every node/.style={font=\sffamily\small}]
+	  	    (1) edge (2);
+	  	\end{tikzpicture}
+			\caption{Compact}
+		\end{subfigure}
+	\caption{Unconditional Importance \& Conditional Preference (UICP)}
+	\end{figure}
 }
 
 \frameT{Partial Lexicographic Preference Trees (PLP-Tree)}{
-	\begin{figure}[ht!]
+	\begin{figure}
 	  \centering
-	    \includegraphics[width=0.9\textwidth]{figs/Cars/ciuptree.png}
-	  \caption{Conditional Importance \& Unconditional Preference (CIUP) PLP-tree}
-	\end{figure}
+		\begin{subfigure}[b]{0.55\textwidth}
+	    \centering
+      \begin{tikzpicture}[->,>=stealth',
+	      level 1/.style={sibling distance=2cm, level distance=33pt},
+	      level 2/.style={sibling distance=0.7cm, level distance=27pt},
+	      level 3/.style={sibling distance=0.7cm, level distance=27pt}
+	    ]
+        \node [main node,inner sep=3pt] (1){S}
+          child {node [main node,inner sep=2pt] (2) {C}
+            child {node [main node,inner sep=2pt] (4) {L} edge from parent node[left]  {\tiny{5}}}
+            child {node [main node,inner sep=2pt] (3) {L}
+            	child {node [rectangle,draw] (14) {} edge from parent node[left]  {\tiny{b}}}
+            	child {node [rectangle,draw] (15) {} edge from parent node[left]  {\tiny{m}}}
+            	child {node [rectangle,draw] (16) {} edge from parent node[right] {\tiny{s}}}
+						edge from parent node[left]  {\tiny{7}}}
+            child {node [main node,inner sep=2pt] (5) {L} edge from parent node[right] {\tiny{2}}}
+          edge from parent node[left] {\small{h}}}
+          child {node [rectangle,draw] (6) {} edge from parent node[left] {\small{m}}}
+          child {node [main node,inner sep=2pt] (10) {L}
+            child {node [main node,inner sep=2pt] (11) {C} edge from parent node[left]  {\tiny{b}}}
+            child {node [main node,inner sep=2pt] (12) {C} 
+            	child {node [rectangle,draw] (17) {} edge from parent node[left]  {\tiny{5}}}
+            	child {node [rectangle,draw] (18) {} edge from parent node[left]  {\tiny{7}}}
+            	child {node [rectangle,draw] (19) {} edge from parent node[right] {\tiny{2}}}
+						edge from parent node[left]  {\tiny{m}}}
+            child {node [main node,inner sep=2pt] (13) {C} edge from parent node[right] {\tiny{s}}}
+          edge from parent node[right] {\small{l}}};
+      \end{tikzpicture}
+			\caption{Full}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.35\textwidth}
+			\hspace{1cm}
+      \begin{tikzpicture}[->,>=stealth',
+	      level 1/.style={sibling distance=2cm, level distance=33pt},
+	      level 2/.style={sibling distance=0.7cm, level distance=27pt}
+	    ]
+	  	      
+	  	  \node[main node,inner sep=3pt] (1) {S};
+	  	  \node[rectangle,draw,inner sep=2pt] at (1,0) {$h\!\! >\!\! m\!\! >\!\! l$};
+	
+	  	  \node[main node,inner sep=2pt] (2) [below left of=1] {C};
+	  	  \node[rectangle,draw,inner sep=2pt] at (-1.6,-0.7) {$5\!\! >\!\! 7\!\! >\!\! 2$};
 
-	According to this CICP PLP-tree, \tit{Car1} is preferred to \tit{Car2}.
+	  	  \node[main node,inner sep=2pt] (3) [below of=2] {L};
+	  	  \node[rectangle,draw,inner sep=2pt] at (-1.6,-1.7) {$b\!\! >\!\! m\!\! >\!\! s$};
+	  	
+	  	  \node[main node,inner sep=2pt] (4) [below right of=1] {L};
+	  	  \node[rectangle,draw,inner sep=2pt] at (1.6,-0.7) {$b\!\! >\!\! m\!\! >\!\! s$};
+	  	
+	  	  \node[main node,inner sep=2pt] (5) [below of=4] {C};
+	  	  \node[rectangle,draw,inner sep=2pt] at (1.6,-1.7) {$5\!\! >\!\! 7\!\! >\!\! 2$};
+
+	  	  \node[rectangle] (6) [below of=5] {};
+
+	  	  \path[every node/.style={font=\sffamily\small}]
+	  	    (1) edge [left]  node{\tiny h} (2)
+	  	    (1) edge [right] node{\tiny l} (4)
+	  	    (2) edge (3)
+	  	    (4) edge (5);
+	  	\end{tikzpicture}
+			\caption{Compact}
+		\end{subfigure}
+	\caption{Conditional Importance \& Unconditional Preference (CIUP)}
+	\end{figure}
 }
 
 \frameT{Partial Lexicographic Preference Trees (PLP-Tree)}{
-	\begin{figure}[ht!]
+	\begin{figure}
 	  \centering
-	    \includegraphics[width=0.9\textwidth]{figs/Cars/cicptree.png}
-	  \caption{Conditional Importance \& Conditional Preference (CICP) PLP-tree}
-	\end{figure}
+		\begin{subfigure}[b]{0.55\textwidth}
+	    \centering
+      \begin{tikzpicture}[->,>=stealth',
+	      level 1/.style={sibling distance=2cm, level distance=33pt},
+	      level 2/.style={sibling distance=0.7cm, level distance=27pt},
+	      level 3/.style={sibling distance=0.7cm, level distance=27pt}
+	    ]
+        \node [main node,inner sep=3pt] (1){S}
+          child {node [main node,inner sep=2pt] (2) {C}
+            child {node [main node,inner sep=2pt] (4) {L} edge from parent node[left]  {\tiny{5}}}
+            child {node [main node,inner sep=2pt] (3) {L}
+            	child {node [rectangle,draw] (14) {} edge from parent node[left]  {\tiny{b}}}
+            	child {node [rectangle,draw] (15) {} edge from parent node[left]  {\tiny{m}}}
+            	child {node [rectangle,draw] (16) {} edge from parent node[right] {\tiny{s}}}
+						edge from parent node[left]  {\tiny{7}}}
+            child {node [main node,inner sep=2pt] (5) {L} edge from parent node[right] {\tiny{2}}}
+          edge from parent node[left] {\small{h}}}
+          child {node [rectangle,draw] (6) {} edge from parent node[left] {\small{m}}}
+          child {node [main node,inner sep=2pt] (10) {L}
+            child {node [main node,inner sep=2pt] (11) {C} edge from parent node[left]  {\tiny{b}}}
+            child {node [main node,inner sep=2pt] (12) {C} 
+            	child {node [rectangle,draw] (17) {} edge from parent node[left]  {\tiny{5}}}
+            	child {node [rectangle,draw] (18) {} edge from parent node[left]  {\tiny{7}}}
+            	child {node [rectangle,draw] (19) {} edge from parent node[right] {\tiny{2}}}
+						edge from parent node[left]  {\tiny{m}}}
+            child {node [main node,inner sep=2pt] (13) {C} edge from parent node[right] {\tiny{s}}}
+          edge from parent node[right] {\small{l}}};
+      \end{tikzpicture}
+			\caption{Full}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.4\textwidth}
+      \begin{tikzpicture}[->,>=stealth',
+	      level 1/.style={sibling distance=2cm, level distance=33pt},
+	      level 2/.style={sibling distance=0.7cm, level distance=27pt}
+	    ]
+	  	      
+	  	  \node[main node,inner sep=3pt] (1) {S};
+	  	  \node[rectangle,draw,inner sep=2pt] at (1,0) {$h\!\! >\!\! m\!\! >\!\! l$};
+	
+	  	  \node[main node,inner sep=2pt] (2) [below left of=1] {C};
+	  	  \node[rectangle,draw,inner sep=2pt] at (-1.6,-0.7) {$5\!\! >\!\! 7\!\! >\!\! 2$};
 
-	According to this CICP PLP-tree, \tit{Car1} is preferred to \tit{Car2}.
+	  	  \node[main node,inner sep=2pt] (3) [below of=2] {L};
+	    	\node[rectangle split, rectangle split parts=3, draw,inner sep=2pt,font=\sffamily\small] at (-1.8,-2)
+	    	    {
+							$2\!:\!b \!\!>\!\! m\!\!>\!\! s$
+	    	      \nodepart{second}
+							$5\!:\!m \!\!>\!\! 5\!\!>\!\! 2$
+	    	      \nodepart{third}
+							$7\!:\!2 \!\!>\!\! 5\!\!>\!\! 7$
+	    	    };
+	  	
+	  	  \node[main node,inner sep=2pt] (4) [below right of=1] {L};
+	  	  \node[rectangle,draw,inner sep=2pt] at (1.6,-0.7) {$b\!\! >\!\! m\!\! >\!\! s$};
+	  	
+	  	  \node[main node,inner sep=2pt] (5) [below of=4] {C};
+	    	\node[rectangle split, rectangle split parts=3, draw,inner sep=2pt,font=\sffamily\small] at (1.8,-2)
+	    	    {
+							$b\!:\!5 \!\!>\!\! 7\!\!>\!\! 2$
+	    	      \nodepart{second}
+							$m\!:\!7 \!\!>\!\! 5\!\!>\!\! 2$
+	    	      \nodepart{third}
+							$s\!:\!2 \!\!>\!\! 5\!\!>\!\! 7$
+	    	    };
+
+	  	  \node[rectangle] (6) [below of=5] {};
+
+	  	  \path[every node/.style={font=\sffamily\small}]
+	  	    (1) edge [left]  node{\tiny h} (2)
+	  	    (1) edge [right] node{\tiny l} (4)
+	  	    (2) edge (3)
+	  	    (4) edge (5);
+	  	\end{tikzpicture}
+			\caption{Compact}
+		\end{subfigure}
+	\caption{Conditional Importance \& Conditional Preference (CICP)}
+	\end{figure}
 }
 
 \frameT{Lexicographic Preference Trees (LP-Trees)}
@@ -379,6 +739,8 @@
     \item An \tit{LP-tree} $\cL$ over $\CD(\cI)$ is a PLP-tree, where
     \begin{itemize}
       \item each attribute appears \tbf{exactly once} on every path from the root to a leaf.
+			\item Unlike P-trees and PLP-trees, an LP-tree induces a total order.
     \end{itemize}
   \end{enumerate}
 }
+
