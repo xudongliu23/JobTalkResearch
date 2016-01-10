@@ -135,20 +135,31 @@
   \end{figure}
 }
 
-\frameT{Experimental Results on PLP-trees}{
-  \begin{figure}[ht!]
-    \centering
-      \includegraphics[width=0.7\textwidth]{figs/PrefLearnResults/Trees/X_MH/CarEvaluation.png}
-    \caption{Learning curve for UIUP using ASP and greedy heuristic}
-  \end{figure}
+\frameT{Experimental Results: CarEvaluation\footnotetext{
+\tiny \url{http://www.cs.uky.edu/~liu/preflearnlib.php}}
 }
+{
+	\begin{center}
+		\#attributes:6, \#outcomes:1728, \#examples:682721
+	\end{center}
 
-\frameT{Experimental Results on PLP-trees}{
-  \begin{figure}[ht!]
+  \begin{figure}
     \centering
-      \includegraphics[width=0.7\textwidth]{figs/PrefLearnResults/Trees/MH/CarEvaluation.png}
-    \caption{Learning curve for all four classes using greedy heuristic}
+    \begin{subfigure}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{figs/PrefLearnResults/MatLabOutput/CarEvaluation_Trees_X_MH.pdf}
+      \caption{Compare exact \& greedy heuristic}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{figs/PrefLearnResults/MatLabOutput/CarEvaluation_Trees_MH.pdf}
+      \caption{Greedy heuristic}
+    \end{subfigure}
+
+    \caption{Learning curves solving \tsc{MaxLearn}}
   \end{figure}
+
+	
 }
 
 %\frameT{Preference Forests (P-Forests)}{
