@@ -270,47 +270,55 @@
 	\end{figure}
 }
 
-\frameT{Relative Expressivity of Preference Languages}{
-	\begin{center}
-		Poss-theories = ASO-rules 
-		%$\subsetsim$ 
-		$\subset$
-			\dual{LP-trees/\dual{$\cap$/\dual{PLP-trees/\dual{$\cap$/P-trees}}}}
-			$\subset$ ASO-theories
-	\end{center}
-}
+%\frameT{Relative Expressivity of Preference Languages}{
+%	\begin{center}
+%		Poss-theories = ASO-rules 
+%		%$\subsetsim$ 
+%		$\subset$
+%			\dual{LP-trees/\dual{$\cap$/\dual{PLP-trees/\dual{$\cap$/P-trees}}}}
+%			$\subset$ ASO-theories
+%	\end{center}
+%}
+%
+%\frameT{Computational Complexity Results}{
+%	{\sc DomTest}: is it that $o \succeq_T o'$ in P-tree $T$?\\
+%	{\sc OptTest}: is outcome $o$ optimal w.r.t $T$?\\
+%	{\sc OptProp}: is there an optimal outcome $o$ w.r.t $T$ st $o \models \alpha$?
+%	
+%	\begin{figure}
+%		\centering
+%
+%	  \begin{tabular}[0.5\textwidth]{ | c | c | c | c | }
+%	    \hline
+%	     & {\sc DomTest}& {\sc OptTest} & {\sc OptProp} \\
+%			\hline
+%			LP-tree & P & P & P \\
+%			\hline
+%			\pbox{20cm}{ASO-rule/ \\ Poss-theory} & P & coNP-c & $\deltap{2}$($P^{NP}$) \\
+%	    \hline
+%	    \tbf{P-tree} & \tbf{P} & \tbf{coNP-c}\fn{The complement problem is reduced from the SAT problem.}
+%				& \tbf{$\deltap{2}$($P^{NP}$)-c}\fn{The problem is reduced from the Maximum Satisfying 
+%																					Assignment (MSA) problem.}\\
+%			\hline
+%			ASO-theory & P & coNP-c & $\sigmap{2}$($NP^{NP}$)-c \\
+%	    \hline
+%			%ACP-net & NP-hard & P & P \\
+%	    %\hline
+%			%CCP-net & PSPACE-c & PSPACE-c? & PSPACE-c? \\
+%	    %\hline
+%	  \end{tabular}
+%
+%		\caption{Computational complexity results}
+%
+%	\end{figure}
+%}
 
 \frameT{Computational Complexity Results}{
-	{\sc DomTest}: is it that $o \succeq_T o'$ in P-tree $T$?\\
-	{\sc OptTest}: is outcome $o$ optimal w.r.t $T$?\\
-	{\sc OptProp}: is there an optimal outcome $o$ w.r.t $T$ st $o \models \alpha$?
-	
-	\begin{figure}
-		\centering
-
-	  \begin{tabular}[0.5\textwidth]{ | c | c | c | c | }
-	    \hline
-	     & {\sc DomTest}& {\sc OptTest} & {\sc OptProp} \\
-			\hline
-			LP-tree & P & P & P \\
-			\hline
-			\pbox{20cm}{ASO-rule/ \\ Poss-theory} & P & coNP-c & $\deltap{2}$($P^{NP}$) \\
-	    \hline
-	    \tbf{P-tree} & \tbf{P} & \tbf{coNP-c}\fn{The complement problem is reduced from the SAT problem.}
-				& \tbf{$\deltap{2}$($P^{NP}$)-c}\fn{The problem is reduced from the Maximum Satisfying 
-																					Assignment (MSA) problem.}\\
-			\hline
-			ASO-theory & P & coNP-c & $\sigmap{2}$($NP^{NP}$)-c \\
-	    \hline
-			%ACP-net & NP-hard & P & P \\
-	    %\hline
-			%CCP-net & PSPACE-c & PSPACE-c? & PSPACE-c? \\
-	    %\hline
-	  \end{tabular}
-
-		\caption{Computational complexity results}
-
-	\end{figure}
+	\begin{enumerate}
+		\item {\sc DomTest}: is it that $o \succeq_T o'$ in P-tree $T$?\\
+		\item {\sc OptTest}: is outcome $o$ optimal w.r.t $T$?\\
+		\item {\sc OptProp}: is there an optimal outcome $o$ w.r.t $T$ st $o \models \alpha$?
+	\end{enumerate}
 }
 
 \frameT{Partial Lexicographic Preference Trees (PLP-Tree)}{

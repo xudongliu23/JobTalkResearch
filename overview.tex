@@ -13,29 +13,26 @@
 %	\end{enumerate}
 %}
 
+%\frameT{Preference Modeling}{
+%	Q: How do we compactly represent qualitative preferences over combinatorial domains?
+%
+%	\begin{enumerate}
+%		\item Answer-Set Optimization Theories\footcitefull{Brewka:ASO}
+%		\item Ceteris Paribus Networks (e.g., CP-nets\footcitefull{bbdh03},
+%					TCP-nets\footcitefull{BrafmanD02:TCP},
+%					CI-nets\footcitefull{bouveret2009conditional})
+%		\item Conditional Preference Theories\footcitefull{Wilson04extendingcp-nets}
+%		\seti
+%	\end{enumerate}
+%}
+
 \frameT{Preference Modeling}{
 	Q: How do we compactly represent qualitative preferences over combinatorial domains?
 
 	\begin{enumerate}
-		\item Answer-Set Optimization Theories\footcitefull{Brewka:ASO}
-		\item Ceteris Paribus Networks (e.g., CP-nets\footcitefull{bbdh03},
-					TCP-nets\footcitefull{BrafmanD02:TCP},
-					CI-nets\footcitefull{bouveret2009conditional})
-		\item Conditional Preference Theories\footcitefull{Wilson04extendingcp-nets}
-		\seti
-	\end{enumerate}
-}
-
-\frameT{Preference Modeling}{
-	Q: How do we compactly represent qualitative preferences over combinatorial domains?
-
-	\begin{enumerate}
-		\conti
-		\item Preference Trees (e.g., 
-					\tbf{LP-trees}\footcitefull{booth:learningLP}\textsuperscript{,}\footcitefull{conf/adt13/LiuT},
-					CLP-trees\footcitefull{brauning2012learning}, 
-					\tbf{PLP-trees}\footcitefull{conf/aaai15/LiuT}, 
-					\tbf{P-trees}\footcitefull{fraser1994}\textsuperscript{,}\footcitefull{wsh/mpref14/LiuT})
+		\item Preference Trees (P-trees)\footcitefull{fraser1994}\textsuperscript{,}\footcitefull{wsh/mpref14/LiuT}
+		\item Partial Lexicographic Preference Trees (PLP-trees)\footcitefull{conf/aaai15/LiuT}
+		\item Lexicographic Preference Trees (LP-trees)\footcitefull{booth:learningLP}\textsuperscript{,}\footcitefull{conf/adt13/LiuT}
 	\end{enumerate}
 }
 
@@ -43,11 +40,19 @@
 	Q: How do we learn predictive qualitative preference models over combinatorial domains?
 
 	\begin{enumerate}
-		\item Ceteris Paribus Networks (e.g., 
-					CP-nets\footcitefull{lang2009complexity}\textsuperscript{,}\footcitefull{koriche2010learning}\textsuperscript{,}\footcitefull{chevaleyre2011learning})
-		\item Preference Trees (e.g., LP-trees\footcitefull{booth:learningLP}, 
-					CLP-trees\footcitefull{brauning2012learning}, \tbf{PLP-trees}\footcitefull{conf/aaai15/LiuT})
-		\item \tbf{Preference Forests}\footcitefull{confInPrep/ijcai16/LiuT1}
+		%\item Ceteris Paribus Networks (e.g., 
+		%			CP-nets\footcitefull{lang2009complexity}\textsuperscript{,}\footcitefull{koriche2010learning}\textsuperscript{,}\footcitefull{chevaleyre2011learning})
+		%\item Preference Trees (e.g., LP-trees\footcitefull{booth:learningLP}, 
+		%			CLP-trees\footcitefull{brauning2012learning}, \tbf{PLP-trees}\footcitefull{conf/aaai15/LiuT})
+		\item Partial Lexicographic Preference Trees 
+					(PLP-trees)\footcitefull{schmitt2006complexity}\textsuperscript{,}\footcitefull{dombi2007learning}\textsuperscript{,}\footcitefull{conf/aaai15/LiuT}
+			\begin{itemize}
+				\item Active and passive learning
+				\item Compute a (possibly small) PLP-tree consistent with all the data
+				\item Compute a PLP-tree that agrees with the data as much as possible
+			\end{itemize}
+		\item Preference Forests\footcitefull{confInPrep/ijcai16/LiuT1}
+		\item Preference Approximation\footcitefull{confInPrep/X/CPN_LPT}
 	\end{enumerate}
 }
 
@@ -55,18 +60,18 @@
 	Q: How do we reason about preferences over combinatorial domains?
 
 	\begin{enumerate}
-		\item \tbf{Preference Optimization}\footcitefull{conf/adt13/LiuT}\textsuperscript{,}\footcitefull{wsh/mpref14/LiuT}\textsuperscript{,}\footcitefull{conf/adt15/liuT}:
+		\item Preference Optimization\footcitefull{lang:aggLP}\textsuperscript{,}\footcitefull{conf/adt13/LiuT}\textsuperscript{,}\footcitefull{wsh/mpref14/LiuT}\textsuperscript{,}\footcitefull{conf/adt15/liuT}:
 			\begin{itemize}
 				\item Dominance testing: $o_1 \succ_P o_2$?
 				\item Optimality testing: $o_1 \succ_P o_2$ for all $o_2 \not = o_1$?
 				\item Optimality computing: what is the optimal outcome wrt $P$?
-				\item Ranking: how are the outcomes ordered wrt $P$?
+				\item Preference aggregation: which candidate wins the election?
 			\end{itemize}
-		\item Preference Misrepresentation\footcitefull{brandt2012computational}:
+		\item Preference Misrepresentation\footcitefull{brandt2012computational}\textsuperscript{,}\footcitefull{confInPrep/X/LiuT}:
 			\begin{itemize}
-				\item Control
-				\item \tbf{Manipulation}\footcitefull{confInPrep/X/LiuT}
-				\item Bribery
+				%\item Control
+				\item Manipulation
+				%\item Bribery
 			\end{itemize}
 	\end{enumerate}
 }
@@ -77,15 +82,15 @@
 	\begin{enumerate}
 		\item Game Theory:
 			\begin{itemize}
-				\item \tbf{Hedonic games}\footcitefull{conf/adt13/Spradling}
+				\item Hedonic games\footcitefull{conf/adt13/Spradling}
 			\end{itemize}
 		\item Automated Planning and Scheduling:
 			\begin{itemize}
-				\item \tbf{Trip planning}\footcitefull{abs/parc/Liu1}
+				\item Trip planning\footcitefull{abs/parc/Liu1}
 			\end{itemize}
 		\item Data-Driven Decision Making:
 			\begin{itemize}
-				\item \tbf{Predictive decisions}\footcitefull{confInPrep/ijcai16/LiuT2}
+				\item Predictive decisions\footcitefull{confInPrep/ijcai16/LiuT2}
 			\end{itemize}
 	\end{enumerate}
 }
@@ -93,7 +98,7 @@
 \frameT{Outline}{
 	\begin{enumerate}
 		\item The languages of P-trees, PLP-trees, and LP-trees
-		\item Learning of preference models (PLP-trees and P-forests)
+		\item Learning preference models in case of PLP-trees
 		\item Reasoning with preferences:
 			\begin{itemize}
 				\item Computing winners and ``strong" outcomes when votes are LP-trees

@@ -99,34 +99,34 @@
   \end{figure}
 }
 
-\frameT{Preference Forests (P-Forests)}{
-	\begin{enumerate}
-		\item A \tit{preference forest} $F$ is a collection of PLP-trees
-					$F = \{T_1,\ldots,T_n\}$.
-		\item Denote by $N_F(o_1,o_2)=|\{T \in F:o_1 \succ_T o_2\}|$.
-		\item Given a preference forest $F$, and two outcomes $o_1$ and $o_2$, 
-					we say that $o_1 \succ_F^\Maj o_2$ iff $N_F(o_1,o_2)>N_F(o_2,o_1)$,
-					and that $o_1 \approx_F^\Maj o_2$ iff $N_F(o_1,o_2)=N_F(o_2,o_1)$.
-		\begin{itemize}
-			\item Pro: intuitive, decided in polynomial time.
-			\item Con: Condorcet paradox.
-			\item Other aggregating rules: positional scoring rules, Copeland's method, etc.
-		\end{itemize}
-	\end{enumerate}
-}
-
-\frameT{Experimental Results on P-Forests}{
-  \begin{figure}[ht!]
-    \centering
-      \includegraphics[width=0.7\textwidth]{figs/PrefLearnResults/Forests/X_MH/CarEvaluation.png}
-    \caption{Learning UIUP using ASP and greedy heuristic}
-  \end{figure}
-}
-
-\frameT{Experimental Results on P-Forests}{
-  \begin{figure}[ht!]
-    \centering
-      \includegraphics[width=0.7\textwidth]{figs/PrefLearnResults/Forests/MH/CarEvaluation.png}
-    \caption{Learning all four classes using greedy heuristic}
-  \end{figure}
-}
+%\frameT{Preference Forests (P-Forests)}{
+%	\begin{enumerate}
+%		\item A \tit{preference forest} $F$ is a collection of PLP-trees
+%					$F = \{T_1,\ldots,T_n\}$.
+%		\item Denote by $N_F(o_1,o_2)=|\{T \in F:o_1 \succ_T o_2\}|$.
+%		\item Given a preference forest $F$, and two outcomes $o_1$ and $o_2$, 
+%					we say that $o_1 \succ_F^\Maj o_2$ iff $N_F(o_1,o_2)>N_F(o_2,o_1)$,
+%					and that $o_1 \approx_F^\Maj o_2$ iff $N_F(o_1,o_2)=N_F(o_2,o_1)$.
+%		\begin{itemize}
+%			\item Pro: intuitive, decided in polynomial time.
+%			\item Con: Condorcet paradox.
+%			\item Other aggregating rules: positional scoring rules, Copeland's method, etc.
+%		\end{itemize}
+%	\end{enumerate}
+%}
+%
+%\frameT{Experimental Results on P-Forests}{
+%  \begin{figure}[ht!]
+%    \centering
+%      \includegraphics[width=0.7\textwidth]{figs/PrefLearnResults/Forests/X_MH/CarEvaluation.png}
+%    \caption{Learning UIUP using ASP and greedy heuristic}
+%  \end{figure}
+%}
+%
+%\frameT{Experimental Results on P-Forests}{
+%  \begin{figure}[ht!]
+%    \centering
+%      \includegraphics[width=0.7\textwidth]{figs/PrefLearnResults/Forests/MH/CarEvaluation.png}
+%    \caption{Learning all four classes using greedy heuristic}
+%  \end{figure}
+%}

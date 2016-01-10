@@ -30,6 +30,7 @@
 \usetikzlibrary{arrows}
 \usepackage{amsmath}
 \usepackage{datetime}
+\usepackage{datenumber}
 \usepackage{savefnmark}
 \usepackage{transparent}
 
@@ -118,6 +119,7 @@
 \newcommand{\CD}{\mathit{CD}}
 \newcommand{\cE}{\mathcal{E}}
 \newcommand{\NP}{\mathit{NP}}
+\newcommand{\coNP}{\mathit{coNP}}
 \newcommand{\CPT}{\mathit{CPT}}
 \newcommand{\Attr}{\mathit{Attr}}
 \newcommand{\Dom}{\mathit{Dom}}
@@ -139,6 +141,7 @@
 \newcommand{\iDest}{\textit{Destination}}
 \newcommand{\deltap}[1]{\mathit{\Delta^P_#1}}
 \newcommand{\sigmap}[1]{\mathit{\Sigma^P_#1}}
+\newcommand{\pip}[1]{\mathit{\Pi^P_#1}}
 \newcommand{\vph}{\mathit{\varphi}}
 \newcommand{\fn}[1]{\footnote{\tiny{#1}}}
 \newcommand{\figref}[1]{Figure~\ref{fig:#1}}
@@ -177,7 +180,8 @@
 \newtheorem{thm}{Theorem}
 
 %\newdateformat{mydate}{\monthname[\THEMONTH] \THEYEAR}
-\newdateformat{mydate}{\THEMONTH/\THEDAY}
+%\newdateformat{mydate}{\monthname[\THEMONTH] \THEDAY, \THEYEAR}
+\newdateformat{mydate}{\datedayname, \THEMONTH/\THEDAY/\THEYEAR}
 
 \newcommand\subsetsim{\mathrel{%
   \ooalign{\raise0.2ex\hbox{$\subset$}\cr\hidewidth\raise-0.8ex\hbox{\scalebox{0.9}{$\sim$}}\hidewidth\cr}}}
@@ -199,10 +203,12 @@
 \author[Xudong Liu]{\linebreak \linebreak Xudong Liu}
 \institute{Ph.D. Candidate \\ Advisor: Dr. Miroslaw Truszczynski \linebreak \linebreak
 					 Department of Computer Science \\ 
-					 College of Engineering \\ University of Kentucky\\ Lexington, KY, USA
+					 College of Engineering \\ University of Kentucky\\ Lexington, KY, USA \\
+					 \mydate\today
 					 %[6em] \includegraphics[height=1.5cm,width=4cm]{figs/UNF_logo.png}
 					}
-\date[UNF, \mydate\today]{}
+%\date[University of North Florida \mydate\today]{}
+\date[University of North Florida]{}
 
 %%%%%%%%%%% BEGIN TITLE PAGE %%%%%%%%%%%%%%%%%%
 \section{@School of Computing, CCEC}
