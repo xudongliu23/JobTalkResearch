@@ -1,2 +1,7 @@
+all: plot
+
 plot:
-	matlab -r generate_figure
+#	matlab -nosplash -nodesktop -r "master_function;exit"
+	for comm in $(shell ls genfig* | sed 's/.m//g') ; do \
+		matlab -nosplash -nodesktop -r "$$comm;exit"; \
+	done
