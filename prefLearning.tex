@@ -1,7 +1,7 @@
 \frameT{Outline}{
   \begin{enumerate}
     {\transparent{0.2} \item The languages of P-trees, PLP-trees, and LP-trees}
-    \item Learning of preference models (PLP-trees and P-forests)
+    \item Learning preference models in case of PLP-trees
     {\transparent{0.2} \item Reasoning with preferences:
       \begin{itemize}
         \item Preference optimization in case of P-trees
@@ -12,27 +12,208 @@
   \end{enumerate}
 }
 
-\frameT{Learning Problems on PLP-trees}{
+\frameT{Learning PLP-trees}{
 	\begin{block}{Consistent Learning (\tsc{ConsLearn})}
 		Given an example set $\cE$, decide 
 		whether there exists a PLP-tree $T$ (of a particular type) such that $T$ 
 		is consistent with $\cE$.
 	\end{block}
+	\vspace{-0.3cm}
 
+  \begin{figure}[ht]
+     \small
+    \centering
+    \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \begin{tikzpicture}[->,>=stealth,node distance=0.5cm,main node/.style={rectangle,font=\small}]
+        \node[main node] (1)              {\textcolor{blue}{($<$sdn,5,blk,m,h,m,m$>$,$<$suv,7m,wht,b,f,m,m$>$)}}; 
+        \node[main node] (2) [below of=1] {\textcolor{green}{($<$spt,2,wht,s,bmw,h,h$>$,$<$spt,2,wht,s,bmw,vh,h$>$)}};
+        \node[main node] (3) [below of=2] {\textcolor{magenta}{($<$mvn,7m,gry,b,f,m,m$>$,$<$sdn,5,bl,m,f,m,m$>$)}};
+      \end{tikzpicture}
+      %\caption{Examples}
+    \end{subfigure}\\ \vspace{0.5cm}
+    \begin{subfigure}[b]{0.95\textwidth}
+    	\centering
+      \begin{tikzpicture}[->,>=stealth',
+        level 1/.style={sibling distance=2cm, level distance=33pt},
+        level 2/.style={sibling distance=0.7cm, level distance=27pt}
+      ]
+
+        \node[main node,inner sep=2pt] (1) {P};
+        \node[rectangle,draw,inner sep=2pt] at (1.2,0) {\textcolor{green}{$m \!\!>\!\! h\!\!>\!\! l\!\!>\!\! vh$}};
+
+        \node[main node,inner sep=2pt] (2) [below of=1] {M};
+        \node[rectangle,draw,inner sep=2pt] at (1.52,-1) {\textcolor{blue}{$h \!\!>\!\! vw\!\!>\!\! f\!\!>\!\! bmw$}};
+
+        \node[main node,inner sep=2pt] (3) [below of=2] {B};
+        \node[rectangle,draw,inner sep=2pt] at (1.8,-2) {\textcolor{magenta}{$mvn\!\! >\!\! suv\!\! >\!\! sdn\!\! >\!\! spt$}};
+
+        \path[every node/.style={font=\sffamily\small}]
+          (1) edge (2)
+          (2) edge (3);
+      \end{tikzpicture}
+      %\caption{UIUP PLP-tree}
+    \end{subfigure}
+  \end{figure}
+}
+
+\frameT{Learning PLP-trees}{
 	\begin{block}{Small Learning (\tsc{SmallLearn})}
 		Given an example set $\cE$
 		and a positive integer $l$ ($l \leq |\cE|$), decide whether there 
 		exists a PLP-tree $T$ (of a particular type) such that $T$ is consistent 
 		with $\cE$ and $|T| \leq l$.
 	\end{block}
+	\vspace{-0.3cm}
 
+  \begin{figure}[ht]
+     \small
+    \centering
+    \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \begin{tikzpicture}[->,>=stealth,node distance=0.5cm,main node/.style={rectangle,font=\small}]
+        \node[main node] (1)              {\textcolor{blue}{($<$sdn,5,blk,m,h,m,m$>$,$<$suv,7m,wht,b,f,m,m$>$)}}; 
+        \node[main node] (2) [below of=1] {\textcolor{green}{($<$spt,2,wht,s,bmw,h,h$>$,$<$spt,2,wht,s,bmw,vh,h$>$)}};
+        \node[main node] (3) [below of=2] {\textcolor{blue}{($<$mvn,7m,gry,b,f,m,m$>$,$<$sdn,5,bl,m,f,m,m$>$)}};
+      \end{tikzpicture}
+      %\caption{Examples}
+    \end{subfigure}\\ \vspace{0.5cm}
+    \begin{subfigure}[b]{0.95\textwidth}
+    	\centering
+      \begin{tikzpicture}[->,>=stealth',
+        level 1/.style={sibling distance=2cm, level distance=33pt},
+        level 2/.style={sibling distance=0.7cm, level distance=27pt}
+      ]
+
+        \node[main node,inner sep=2pt] (1) {M};
+        \node[rectangle,draw,inner sep=2pt] at (1.8,0) {\textcolor{blue}{$mvn\!\! >\!\! sdn\!\! >\!\! suv\!\! >\!\! spt$}};
+
+        \node[main node,inner sep=2pt] (2) [below of=1] {P};
+        \node[rectangle,draw,inner sep=2pt] at (1.2,-1) {\textcolor{green}{$m \!\!>\!\! h\!\!>\!\! l\!\!>\!\! vh$}};
+
+        \path[every node/.style={font=\sffamily\small}]
+          (1) edge (2);
+      \end{tikzpicture}
+      %\caption{UIUP PLP-tree}
+    \end{subfigure}
+  \end{figure}
+}
+
+\frameT{Learning PLP-trees}{
 	\begin{block}{Maixmal Learning (\tsc{MaxLearn})}
 		Given an example set $\cE$ and a 
 		positive integer $k$ ($k \leq m$), decide whether there exists a PLP-tree 
 		$T$ (of a particular type) such that $T$ satisfies at least $k$ examples 
 		in $\cE$.
 	\end{block}
+	\vspace{-0.3cm}
+
+  \begin{figure}[ht]
+     \small
+    \centering
+    \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \begin{tikzpicture}[->,>=stealth,node distance=0.5cm,main node/.style={rectangle,font=\small}]
+        \node[main node] (1)              {\textcolor{blue}{($<$sdn,5,blk,m,h,m,m$>$,$<$suv,7m,wht,b,f,m,m$>$)}}; 
+        \node[main node] (2) [below of=1] {\textcolor{green}{($<$spt,2,wht,s,bmw,h,h$>$,$<$spt,2,wht,s,bmw,vh,h$>$)}};
+        \node[main node] (3) [below of=2] {\textcolor{blue}{($<$mvn,7m,gry,b,f,m,m$>$,$<$sdn,5,bl,m,f,m,m$>$)}};
+        \node[main node] (4) [below of=3] {\textcolor{red}{($<$suv,7m,gry,b,vw,vh,m$>$,$<$suv,7m,gry,b,vw,h,m$>$)}};
+      \end{tikzpicture}
+      %\caption{Examples}
+    \end{subfigure}\\ \vspace{0.5cm}
+    \begin{subfigure}[b]{0.95\textwidth}
+    	\centering
+      \begin{tikzpicture}[->,>=stealth',
+        level 1/.style={sibling distance=2cm, level distance=33pt},
+        level 2/.style={sibling distance=0.7cm, level distance=27pt}
+      ]
+
+        \node[main node,inner sep=2pt] (1) {M};
+        \node[rectangle,draw,inner sep=2pt] at (1.8,0) {\textcolor{blue}{$mvn\!\! >\!\! sdn\!\! >\!\! suv\!\! >\!\! spt$}};
+
+        \node[main node,inner sep=2pt] (2) [below of=1] {P};
+        \node[rectangle,draw,inner sep=2pt] at (1.2,-1) {\textcolor{green}{$m \!\!>\!\! h\!\!>\!\! l\!\!>\!\! vh$}};
+
+        \path[every node/.style={font=\sffamily\small}]
+          (1) edge (2);
+      \end{tikzpicture}
+      %\caption{UIUP PLP-tree}
+    \end{subfigure}
+  \end{figure}
 }
+
+\frameT{Learning PLP-trees}{
+	\begin{block}{Consistent Learning (\tsc{ConsLearn})}
+		Given an example set $\cE$, decide 
+		whether there exists a PLP-tree $T$ (of a particular type) such that $T$ 
+		is consistent with $\cE$.
+	\end{block}
+	\vspace{-0.3cm}
+
+  \begin{figure}[ht]
+     \small
+    \centering
+    \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \begin{tikzpicture}[->,>=stealth,node distance=0.5cm,main node/.style={rectangle,font=\small}]
+        \node[main node] (1)              {\textcolor{blue}{($<$sdn,5,blk,m,h,m,m$>$,$<$suv,7m,wht,b,f,m,m$>$)}}; 
+        \node[main node] (2) [below of=1] {\textcolor{green}{($<$spt,2,wht,s,bmw,h,h$>$,$<$spt,2,wht,s,bmw,vh,h$>$)}};
+        \node[main node] (3) [below of=2] {\textcolor{blue}{($<$mvn,7m,gry,b,f,m,m$>$,$<$sdn,5,bl,m,f,m,m$>$)}};
+        \node[main node] (4) [below of=3] {\textcolor{red}{($<$suv,7m,gry,b,vw,vh,m$>$,$<$suv,7m,gry,b,vw,h,m$>$)}};
+      \end{tikzpicture}
+      %\caption{Examples}
+    \end{subfigure}\\ \vspace{0.5cm}
+    \begin{subfigure}[b]{0.95\textwidth}
+    	\centering
+      \begin{tikzpicture}[->,>=stealth',
+        level 1/.style={sibling distance=2cm, level distance=33pt},
+        level 2/.style={sibling distance=0.7cm, level distance=27pt}
+      ]
+
+        \node[main node,inner sep=2pt] (1) {M};
+        \node[rectangle,draw,inner sep=2pt] at (1.8,0) {\textcolor{blue}{$mvn\!\! >\!\! sdn\!\! >\!\! suv\!\! >\!\! spt$}};
+
+        \node[main node,inner sep=2pt] (2) [below of=1] {P};
+        \node[rectangle split, rectangle split parts=4, draw,inner sep=2pt,font=\sffamily\small] at (1.6,-1.5)
+            {
+              \textcolor{green}{$spt\!:m \!\!>\!\! h\!\!>\!\! l\!\!>\!\! vh$}
+              \nodepart{second}
+              \textcolor{red}{$suv\!:vh \!\!>\!\! h\!\!>\!\! m\!\!>\!\! l$}
+              \nodepart{third}
+              $mvn\!:\!m \!\!>\!\! h\!\!>\!\! l\!\!>\!\! vh$
+              \nodepart{fourth}
+              $sdn\!:\!m \!\!>\!\! h\!\!>\!\! l\!\!>\!\! vh$
+            };
+
+        \path[every node/.style={font=\sffamily\small}]
+          (1) edge (2);
+      \end{tikzpicture}
+      %\caption{UIUP PLP-tree}
+    \end{subfigure}
+  \end{figure}
+}
+
+%\frameT{Learning PLP-trees}{
+%	\begin{block}{Consistent Learning (\tsc{ConsLearn})}
+%		Given an example set $\cE$, decide 
+%		whether there exists a PLP-tree $T$ (of a particular type) such that $T$ 
+%		is consistent with $\cE$.
+%	\end{block}
+%
+%	\begin{block}{Small Learning (\tsc{SmallLearn})}
+%		Given an example set $\cE$
+%		and a positive integer $l$ ($l \leq |\cE|$), decide whether there 
+%		exists a PLP-tree $T$ (of a particular type) such that $T$ is consistent 
+%		with $\cE$ and $|T| \leq l$.
+%	\end{block}
+%
+%	\begin{block}{Maixmal Learning (\tsc{MaxLearn})}
+%		Given an example set $\cE$ and a 
+%		positive integer $k$ ($k \leq m$), decide whether there exists a PLP-tree 
+%		$T$ (of a particular type) such that $T$ satisfies at least $k$ examples 
+%		in $\cE$.
+%	\end{block}
+%}
 
 \frameT{Computational Complexity}{
   \begin{enumerate}
@@ -103,6 +284,53 @@
             Learning Lexicographic Strategies}, 2006.}
 }
 
+\frameT{Experimentation}{
+  \begin{figure}[ht!]
+    \centering
+      \includegraphics[width=0.9\textwidth]{figs/PrefLearnResults/LearningPLPT.pdf}
+    \caption{PLP-tree learning system}
+  \end{figure}
+
+}
+
+\frameT{Datasets}{
+	\begin{figure}
+		\centering
+		\begin{tabular}{ |c||c|c|c|c| } 
+			\hline
+			Dataset          & \#Attributes & \#Outcomes & \#Examples \\
+			\hline \hline
+			BreastCancerWisconsin   & 9 & 270 & 9009 \\ 
+			\hline
+			CarEvaluation           & 6 & 1728 & 682721 \\ 
+			\hline
+			CreditApproval          & 10 & 520 & 66079 \\
+			\hline
+			GermanCredit            & 10 & 914 & 172368  \\
+			\hline
+			Ionosphere              & 10 & 118 & 3472 \\
+			\hline
+			MammographicMass        & 5 & 62 & 792 \\
+			\hline
+			Mushroom                & 10 & 184 & 8448 \\
+			\hline
+			Nursery                 & 8 & 1266 & 548064 \\
+			\hline
+			SPECTHeart              & 10 & 115 & 3196 \\
+			\hline
+			TicTacToe               & 9 & 958 & 207832 \\
+			\hline
+			Vehicle                 & 10 & 455 & 76713 \\
+			\hline
+			Wine                    & 10 & 177 & 10322 \\
+			\hline
+		\end{tabular}
+		\caption{Preference Learning Library\footnotemark}
+	\end{figure}
+
+	\footnotetext{\tiny \url{http://www.cs.uky.edu/~liu/preflearnlib.php}}
+}
+
 \frameT{Partial Lexicographic Preference Trees (PLP-Tree)}{
   \begin{figure}[ht!]
     \centering
@@ -135,7 +363,7 @@
   \end{figure}
 }
 
-\frameT{Experimental Results: CarEvaluation\footnotetext{
+\frameT{Experimental Results: CarEvaluation\footnote{
 \tiny \url{http://www.cs.uky.edu/~liu/preflearnlib.php}}
 }
 {
@@ -158,8 +386,31 @@
 
     \caption{Learning curves solving \tsc{MaxLearn}}
   \end{figure}
+}
 
-	
+\frameT{Experimental Results: Wine\footnote{
+\tiny \url{http://www.cs.uky.edu/~liu/preflearnlib.php}}
+}
+{
+	\begin{center}
+		\#attributes:10, \#outcomes:177, \#examples:10322
+	\end{center}
+
+  \begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{figs/PrefLearnResults/MatLabOutput/Wine_Trees_X_MH.pdf}
+      \caption{Compare exact \& greedy heuristic}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{figs/PrefLearnResults/MatLabOutput/Wine_Trees_MH.pdf}
+      \caption{Greedy heuristic}
+    \end{subfigure}
+
+    \caption{Learning curves solving \tsc{MaxLearn}}
+  \end{figure}
 }
 
 %\frameT{Preference Forests (P-Forests)}{

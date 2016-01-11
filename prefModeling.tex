@@ -1,7 +1,7 @@
 \frameT{Outline}{
   \begin{enumerate}
     \item The languages of P-trees, PLP-trees, and LP-trees
-    {\transparent{0.2} \item Learning of preference models (PLP-trees and P-forests)}
+    {\transparent{0.2} \item Learning preference models in case of PLP-trees}
     {\transparent{0.2} \item Reasoning with preferences:
       \begin{itemize}
         \item Preference optimization in case of P-trees
@@ -159,12 +159,20 @@
 	  \caption{A P-tree over cars\footnotemark}
 	\end{figure}
 
+\vspace{-1cm}
+
+	{\transparent{0} 
+		\begin{center}
+			$\textcolor{red}{Car2} \succ \textcolor{green}{Car1}$
+		\end{center}
+	}
+
 	\footnotetext{
 		$\varphi=(x_{1,1} \land x_{3,5}) \lor (x_{1,2} \land x_{3,2})$.
 	}
 }
 
-\frameT{Example: Preferences over Cars}{
+\frameT{Example: Preference Trees over Cars}{
 	\addtocounter{footnote}{-1}
 	\begin{center}
     \tbf{BodyType}($X_1$): \{mvan($x_{1,1}$), sedan($x_{1,2}$), sport($x_{1,3}$), suv($x_{1,4}$)\}.\\
@@ -500,7 +508,7 @@
 			\caption{Full}
 		\end{subfigure}
 		\begin{subfigure}[b]{0.25\textwidth}
-			\hspace{1cm}
+			\centering
       \begin{tikzpicture}[->,>=stealth',
 	      level 1/.style={sibling distance=2cm, level distance=33pt},
 	      level 2/.style={sibling distance=0.7cm, level distance=27pt}
@@ -552,7 +560,7 @@
 			\caption{Full}
 		\end{subfigure}
 		\begin{subfigure}[b]{0.25\textwidth}
-			\hspace{1cm}
+			\centering
       \begin{tikzpicture}[->,>=stealth',
 	      level 1/.style={sibling distance=2cm, level distance=33pt},
 	      level 2/.style={sibling distance=0.7cm, level distance=27pt}
@@ -616,7 +624,7 @@
 			\caption{Full}
 		\end{subfigure}
 		\begin{subfigure}[b]{0.35\textwidth}
-			\hspace{1cm}
+			\centering
       \begin{tikzpicture}[->,>=stealth',
 	      level 1/.style={sibling distance=2cm, level distance=33pt},
 	      level 2/.style={sibling distance=0.7cm, level distance=27pt}
@@ -685,6 +693,7 @@
 			\caption{Full}
 		\end{subfigure}
 		\begin{subfigure}[b]{0.4\textwidth}
+			\centering
       \begin{tikzpicture}[->,>=stealth',
 	      level 1/.style={sibling distance=2cm, level distance=33pt},
 	      level 2/.style={sibling distance=0.7cm, level distance=27pt}

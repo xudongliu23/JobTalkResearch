@@ -61,10 +61,10 @@
     \begin{subfigure}[b]{0.45\textwidth}
 	  	\centering
 		  \begin{tikzpicture}[->,>=stealth',node distance=1.5cm,main node/.style={circle,draw,font=\small}]
-		    \node[main node,inner sep=1.2pt] (1)                    {$o_{1,5}$};
-				\node[main node,inner sep=1.2pt] (2) [below left of=1]  {$o_{2,6}$};
-		  	\node[main node,inner sep=1.2pt] (3) [below right of=1] {$o_{3,7}$};
-		  	\node[main node,inner sep=1.2pt] (4) [below right of=2] {$o_{4,8}$};
+		    \node[main node,inner sep=0pt] (1)                    {$o_1,\!o_5$};
+				\node[main node,inner sep=0pt] (2) [below left of=1]  {$o_2,\!o_6$};
+		  	\node[main node,inner sep=0pt] (3) [below right of=1] {$o_3,\!o_7$};
+		  	\node[main node,inner sep=0pt] (4) [below right of=2] {$o_4,\!o_8$};
 		
 		    \path[every node/.style={font=\sffamily\small}]
 		      (4) edge (2)
@@ -81,11 +81,11 @@
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
 	  	\centering
-		  \begin{tikzpicture}[->,>=stealth',node distance=1cm,main node/.style={circle,draw,font=\small}]
-		    \node[main node,inner sep=1.2pt] (1)              {$o_{1,5}$};
-				\node[main node,inner sep=1.2pt] (2) [below of=1] {$o_{2,6}$};
-		  	\node[main node,inner sep=1.2pt] (3) [below of=2] {$o_{3,7}$};
-		  	\node[main node,inner sep=1.2pt] (4) [below of=3] {$o_{4,8}$};
+		  \begin{tikzpicture}[->,>=stealth',node distance=1.1cm,main node/.style={circle,draw,font=\small}]
+		    \node[main node,inner sep=0pt] (1)              {$o_1,\!o_5$};
+				\node[main node,inner sep=0pt] (2) [below of=1] {$o_2,\!o_6$};
+		  	\node[main node,inner sep=0pt] (3) [below of=2] {$o_3,\!o_7$};
+		  	\node[main node,inner sep=0pt] (4) [below of=3] {$o_4,\!o_8$};
 		
 		    \path[every node/.style={font=\sffamily\small}]
 		      (4) edge (3)
@@ -235,11 +235,11 @@
 	  \centering
     \begin{subfigure}[b]{0.45\textwidth}
 	  	\centering
-		  \begin{tikzpicture}[->,>=stealth',node distance=1cm,main node/.style={circle,draw,font=\small}]
-		    \node[main node,inner sep=1.2pt] (1)              {$o_{1,5}$};
-				\node[main node,inner sep=1.2pt] (2) [below of=1] {$o_{2,6}$};
-		  	\node[main node,inner sep=1.2pt] (3) [below of=2] {$o_{3,7}$};
-		  	\node[main node,inner sep=1.2pt] (4) [below of=3] {$o_{4,8}$};
+		  \begin{tikzpicture}[->,>=stealth',node distance=1.1cm,main node/.style={circle,draw,font=\small}]
+		    \node[main node,inner sep=0pt] (1)              {$o_1,\!o_5$};
+				\node[main node,inner sep=0pt] (2) [below of=1] {$o_2,\!o_6$};
+		  	\node[main node,inner sep=0pt] (3) [below of=2] {$o_3,\!o_7$};
+		  	\node[main node,inner sep=0pt] (4) [below of=3] {$o_4,\!o_8$};
 		
 		    \path[every node/.style={font=\sffamily\small}]
 		      (4) edge (3)
@@ -339,7 +339,7 @@
 %}
 
 \frameT{Combinatorial Domains: Example}{
-	Domain of cars (cf. the Car Evaluation Dataset\footnotemark)
+	Domain of cars:
 	\begin{enumerate}
 		\item \tbf{BodyType}: \{mvan, sedan, sport, suv\}.
 		\item \tbf{Capacity}: \{2, 5, 7m\}.
@@ -349,13 +349,9 @@
 		\item \tbf{Price}: \{low, med, high, vhigh\}.
 		\item \tbf{Safety}: \{low, med, high\}.
 	\end{enumerate}
-	
-	\footnotetext{\tiny \url{http://www.cs.uky.edu/~liu/preflearnlib.php}, slightly
-		adapted in the talk.}
 }
 
-\frameT{Qualitative Preferences}{
-	Individual:
+\frameT{Single Agent}{
 	\begin{figure}[ht!]
 	  \centering
 	    \includegraphics[width=0.95\textwidth]{figs/Cars/individual.png}
@@ -363,8 +359,7 @@
 	\end{figure}
 }
 
-\frameT{Qualitative Preferences}{
-	Collective:
+\frameT{Multi-Agent}{
 	\begin{figure}[ht!]
 	  \centering
 	    \includegraphics[width=0.5\textwidth]{figs/Cars/group.png}
@@ -376,11 +371,12 @@
 	\begin{enumerate}
 		\item Preference representation formalisms to compactly model qualitative preferences
 					over combinatorial domains.
-		\item Preference elicitation and learning methods to cast preferences of agents in a formalism.
+		\item Preference elicitation and learning methods to cast preferences of agents 
+					as a theory in a preference formalism.
 		\item Preference reasoning tasks:
 		\begin{itemize}
 			\item Dominance and optimization
-			\item Manipulation: better off by misreporting preferences untruthfully.
+			\item Manipulation: better off by misreporting preferences.
 		\end{itemize}
 	\end{enumerate}
 }
