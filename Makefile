@@ -102,4 +102,5 @@ clean:
 
 .PHONY: spell
 spell:
-	aspell --lang=en --mode=tex check $(PREFIX).tex
+	#aspell --lang=en --mode=tex check $(PREFIX).tex
+	for f in *.tex; do aspell --lang=en --mode=tex check $$f; done

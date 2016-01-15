@@ -1,0 +1,56 @@
+P1:
+Thank you Dr. XX for the introduction.
+Thank you all very much for coming.
+My name is Xudong Liu.
+I am a PhD candidate in CS from UK.
+Today my talk is about my research work on preference trees over
+combinatorial domains.
+
+P2:
+Why are preferences important?  Why do we care about preferences?
+Well, preferences are everywhere.
+People give ratings to items online, such as a movie or a wireless mouse.
+The ratings are essentially people's preferences.
+Usually the higher the score or the more stars, the more preferred is the item.
+Sometimes our preferences are taken into account before we even
+realize it.  For instance, google search and google scholar customize
+the search results, so that even for the same search key words, different
+users may end up with different lists of webpage links.
+On the social scale, we cast our votes in an election where a winning candidate,
+e.g., a representative, or a president, needs to be selected.
+The votes are basically preferences over a set of candidates.
+
+P3:
+Now that we saw that preferences are everywhere and are important.
+We need to know how people may describe preferences so that we,
+as computer scientists, can express them mathematically, so that
+computers will be able to model, learn and reason with preferences.
+Let us look at these two cars.  On the left, we have a gray Honda minivan;
+on the right, we have a blue VW sedan.  Let's call them simply Car1 and Car2.
+Now we may say preferences over these two cars, such as I prefer
+Car1 to Car2, I like Car1 and Car2 equally, or because of incomplete information
+about them I cannot decide my preference.
+However, in practice, this incomparability barely is the case; because one
+is able to tell the order once all the information needed is gathered.
+
+P4:
+In general, we express preferences either quantitatively or qualitatively.
+In the quantitative approach, we assign numeric values to the objects,
+and they are ordered based on the ordering of real numbers.
+There, we typically design utility functions that maps the domains of
+attributes to numbers.  E.g., for the BodyType attribute we may assign 5 to
+minivan and 8 to sedan, for the Color attribute we may give 6 to gray and 7 
+blue, etc.  Eventually, we collect the total and thus the preference follows.
+However, in many cases, it is difficulty to come up with accurate
+utility functions and it can be too much work for complex domains that contain
+too many values to consider.
+This is when we resort to yet another approach of describing preferences, namely,
+qualitative approach.  Here, we focus on the relative desirability of properties of the
+cars.  For instance, I may specify that I prefer minivans to sedans; that is,
+the car being a minivan is a more desired property than it being a sedan.
+Sometimes, these qualitative preference statements are conditional.
+E.g., if I am considering sedan cars, I prefer blue ones to gray ones;
+if I am considering minivans, I like gray more than blue; etc.
+The idea here is that, from not very many qualitative preference statements, 
+we want to build a preference model that could order all cars in the given domain.
+My research was mostly about qualitative preferences.
