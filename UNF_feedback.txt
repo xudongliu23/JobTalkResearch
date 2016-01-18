@@ -1,0 +1,5 @@
+Took too much time (more than an hour)
+
+difference between p-trees and decision trees.
+
+difficulty understanding the partial preorder diagram.
