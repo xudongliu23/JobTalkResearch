@@ -42,80 +42,80 @@
 %					there exists no $o_2$ such that $o_2 \succ_T o_1$.
 %	\end{enumerate}
 %}
-
-\frameT{Preference Trees (P-Trees)}{
-	Let $\varphi$, $\psi$, and $\pi$ be propositional formulas over the
-	set $\cL$ of literals that are values from $\bigcup_{X_i \in V} \Dom(X_i)$.
-
-	\begin{figure}[!ht]
-	  \centering
-      \begin{tikzpicture}[->,>=stealth',
-	      level 1/.style={sibling distance=1.7cm, level distance=33pt},
-	      level 2/.style={sibling distance=1cm, level distance=27pt}
-	    ]
-        \node [main node,inner sep=0pt,minimum size=0.8cm] (1){$\varphi$}
-          child {node [main node,inner sep=0pt,minimum size=0.8cm] (2) {$\psi$}
-            child {node [rectangle,draw] (3) {}}
-            child {node [rectangle,draw] (4) {}}
-                            }
-          child {node [main node,inner sep=0pt,minimum size=0.8cm] (5) {$\pi$}
-            child {node [rectangle,draw] (6) {}
-                                    }
-            child {node [rectangle,draw] (7) {}
-                                    }
-          };
-      \end{tikzpicture}
-	  \caption{A P-tree}
-	\end{figure}
-
-	\vspace{-0.5cm}
-
-	\begin{center}
-		$\varphi \land \psi \succ \varphi \land \neg \psi \succ \neg \varphi \land \pi
-			\succ \neg \varphi \land \neg \pi$.
-	\end{center}
-
-	\begin{center}
-		{\transparent{0} Total preorder}
-	\end{center}
-}
-
-\frameT{Preference Trees (P-Trees)}{
-	Let $\varphi$, $\psi$, and $\pi$ be propositional formulas over the
-	set $\cL$ of literals that are values from $\bigcup_{X_i \in V} \Dom(X_i)$.
-
-	\begin{figure}[!ht]
-	  \centering
-      \begin{tikzpicture}[->,>=stealth',
-	      level 1/.style={sibling distance=1.7cm, level distance=33pt},
-	      level 2/.style={sibling distance=1cm, level distance=27pt}
-	    ]
-        \node [main node,inner sep=0pt,minimum size=0.8cm] (1){$\varphi$}
-          child {node [main node,inner sep=0pt,minimum size=0.8cm] (2) {$\psi$}
-            child {node [rectangle,draw] (3) {}}
-            child {node [rectangle,draw] (4) {}}
-                            }
-          child {node [main node,inner sep=0pt,minimum size=0.8cm] (5) {$\pi$}
-            child {node [rectangle,draw] (6) {}
-                                    }
-            child {node [rectangle,draw] (7) {}
-                                    }
-          };
-      \end{tikzpicture}
-	  \caption{A P-tree}
-	\end{figure}
-
-	\vspace{-0.5cm}
-
-	\begin{center}
-		$\varphi \land \psi \succ \varphi \land \neg \psi \succ \neg \varphi \land \pi
-			\succ \neg \varphi \land \neg \pi$.
-	\end{center}
-
-	\begin{center}
-		Total preorder
-	\end{center}
-}
+%
+%\frameT{Preference Trees (P-Trees)}{
+%	Let $\varphi$, $\psi$, and $\pi$ be propositional formulas over the
+%	set $\cL$ of literals that are values from $\bigcup_{X_i \in V} \Dom(X_i)$.
+%
+%	\begin{figure}[!ht]
+%	  \centering
+%      \begin{tikzpicture}[->,>=stealth',
+%	      level 1/.style={sibling distance=1.7cm, level distance=33pt},
+%	      level 2/.style={sibling distance=1cm, level distance=27pt}
+%	    ]
+%        \node [main node,inner sep=0pt,minimum size=0.8cm] (1){$\varphi$}
+%          child {node [main node,inner sep=0pt,minimum size=0.8cm] (2) {$\psi$}
+%            child {node [rectangle,draw] (3) {}}
+%            child {node [rectangle,draw] (4) {}}
+%                            }
+%          child {node [main node,inner sep=0pt,minimum size=0.8cm] (5) {$\pi$}
+%            child {node [rectangle,draw] (6) {}
+%                                    }
+%            child {node [rectangle,draw] (7) {}
+%                                    }
+%          };
+%      \end{tikzpicture}
+%	  \caption{A P-tree}
+%	\end{figure}
+%
+%	\vspace{-0.5cm}
+%
+%	\begin{center}
+%		$\varphi \land \psi \succ \varphi \land \neg \psi \succ \neg \varphi \land \pi
+%			\succ \neg \varphi \land \neg \pi$.
+%	\end{center}
+%
+%	\begin{center}
+%		{\transparent{0} Total preorder}
+%	\end{center}
+%}
+%
+%\frameT{Preference Trees (P-Trees)}{
+%	Let $\varphi$, $\psi$, and $\pi$ be propositional formulas over the
+%	set $\cL$ of literals that are values from $\bigcup_{X_i \in V} \Dom(X_i)$.
+%
+%	\begin{figure}[!ht]
+%	  \centering
+%      \begin{tikzpicture}[->,>=stealth',
+%	      level 1/.style={sibling distance=1.7cm, level distance=33pt},
+%	      level 2/.style={sibling distance=1cm, level distance=27pt}
+%	    ]
+%        \node [main node,inner sep=0pt,minimum size=0.8cm] (1){$\varphi$}
+%          child {node [main node,inner sep=0pt,minimum size=0.8cm] (2) {$\psi$}
+%            child {node [rectangle,draw] (3) {}}
+%            child {node [rectangle,draw] (4) {}}
+%                            }
+%          child {node [main node,inner sep=0pt,minimum size=0.8cm] (5) {$\pi$}
+%            child {node [rectangle,draw] (6) {}
+%                                    }
+%            child {node [rectangle,draw] (7) {}
+%                                    }
+%          };
+%      \end{tikzpicture}
+%	  \caption{A P-tree}
+%	\end{figure}
+%
+%	\vspace{-0.5cm}
+%
+%	\begin{center}
+%		$\varphi \land \psi \succ \varphi \land \neg \psi \succ \neg \varphi \land \pi
+%			\succ \neg \varphi \land \neg \pi$.
+%	\end{center}
+%
+%	\begin{center}
+%		Total preorder
+%	\end{center}
+%}
 
 \frameT{Example: The Cars Domain}{
   \begin{enumerate}
@@ -129,289 +129,289 @@
   \end{enumerate}
 }
 
-\frameT{Example: Preference Trees over Cars}{
-	\begin{center}
-    \tbf{BodyType}($X_1$): \{mvan($x_{1,1}$), sedan($x_{1,2}$), sport($x_{1,3}$), suv($x_{1,4}$)\}.\\
-    \tbf{Color}($X_3$): \{black, blue, gray, red, white\}.\\
-    \tbf{Price}($X_6$): \{low, med, high, vhigh\}.
-	\end{center}
-
-\vspace{-0.2cm}
-
-	\begin{figure}[!ht]
-	  \centering
-      \begin{tikzpicture}[->,>=stealth',
-	      level 1/.style={sibling distance=1.7cm, level distance=33pt},
-	      level 2/.style={sibling distance=1cm, level distance=27pt}
-	    ]
-        \node [main node,inner sep=4pt] (1){$\varphi$}
-          child {node [main node,inner sep=1pt] (2) {$x_{6,2}$}
-            child {node [rectangle,draw] (3) {}}
-            child {node [rectangle,draw] (4) {}}
-                            }
-          child {node [main node,inner sep=1pt] (5) {$x_{6,2}$}
-            child {node [rectangle,draw] (6) {}
-                                    }
-            child {node [rectangle,draw] (7) {}
-                                    }
-          };
-      \end{tikzpicture}
-	  \caption{A P-tree over cars\footnotemark}
-	\end{figure}
-
-\vspace{-1cm}
-
-	{\transparent{0} 
-		\begin{center}
-			$\textcolor{red}{Car2} \succ \textcolor{green}{Car1}$
-		\end{center}
-	}
-
-	\footnotetext{
-		$\varphi=(x_{1,1} \land x_{3,5}) \lor (x_{1,2} \land x_{3,2})$.
-	}
-}
-
-\frameT{Example: Preference Trees over Cars}{
-	\addtocounter{footnote}{-1}
-	\begin{center}
-    \tbf{BodyType}($X_1$): \{mvan($x_{1,1}$), sedan($x_{1,2}$), sport($x_{1,3}$), suv($x_{1,4}$)\}.\\
-    \tbf{Color}($X_3$): \{black, blue, gray, red, white\}.\\
-    \tbf{Price}($X_6$): \{low, med, high, vhigh\}.
-	\end{center}
-
-\vspace{-0.2cm}
-
-	\begin{figure}[!ht]
-	  \centering
-      \begin{tikzpicture}[->,>=stealth',
-	      level 1/.style={sibling distance=1.7cm, level distance=33pt},
-	      level 2/.style={sibling distance=1cm, level distance=27pt}
-	    ]
-        \node [main node,inner sep=4pt] (1){$\varphi$}
-          child [red] {node [main node,inner sep=1pt,black] (2) {$x_{6,2}$}
-            child {node [rectangle,draw,fill] (3) {}}
-            child [black] {node [rectangle,draw] (4) {}}
-                            }
-          child [green] {node [main node,inner sep=1pt,black] (5) {$x_{6,2}$}
-            child {node [rectangle,draw,fill] (6) {}
-                                    }
-            child [black] {node [rectangle,draw] (7) {}
-                                    }
-          };
-      \end{tikzpicture}
-	  \caption{A P-tree over cars\footnotemark}
-	\end{figure}
-
-\vspace{-1cm}
-
-	\begin{center}
-		$\textcolor{red}{Car2} \succ \textcolor{green}{Car1}$
-	\end{center}
-
-	\footnotetext{
-		$\varphi=(x_{1,1} \land x_{3,5}) \lor (x_{1,2} \land x_{3,2})$.
-	}
-}
-
-\frameT{Compact Representation of P-trees}{
-	\begin{center}
-    \tbf{BodyType}($X_1$): \{mvan($x_{1,1}$), sedan($x_{1,2}$), sport($x_{1,3}$), suv($x_{1,4}$)\}.\\
-    \tbf{Color}($X_3$): \{black, blue, gray, red, white\}.\\
-    \tbf{Price}($X_6$): \{low, med, high, vhigh\}.
-	\end{center}
-
-\vspace{-0.2cm}
-
-	\begin{figure}
-	  \centering
-		\begin{subfigure}[b]{0.45\textwidth}
-	    \centering
-      \begin{tikzpicture}[->,>=stealth',
-	      level 1/.style={sibling distance=1.7cm, level distance=33pt},
-	      level 2/.style={sibling distance=1cm, level distance=27pt}
-	    ]
-        \node [main node,inner sep=4pt] (1){$\varphi$}
-          child {node [main node,inner sep=1pt] (2) {$x_{6,2}$}
-            child {node [rectangle,draw] (3) {}}
-            child {node [rectangle,draw] (4) {}}
-                            }
-          child {node [main node,inner sep=1pt] (5) {$x_{6,2}$}
-            child {node [rectangle,draw] (6) {}
-                                    }
-            child {node [rectangle,draw] (7) {}
-                                    }
-          };
-      \end{tikzpicture}
-			\caption{Full}
-		\end{subfigure}
-		\begin{subfigure}[b]{0.25\textwidth}
-			\hspace{1cm}
-      \begin{tikzpicture}[->,>=stealth',
-        level 1/.style={sibling distance=1.7cm, level distance=33pt},
-        level 2/.style={sibling distance=1cm, level distance=27pt}]
-        \node [main node,inner sep=4pt] (1){$\varphi$}
-          child {node [main node,inner sep=1pt] (2) {$x_{6,2}$}
-                    child {node [rectangle] (4) {} edge from parent[draw=none]}
-                            };
-      \end{tikzpicture}
-			\caption{Compact}
-		\end{subfigure}
-	\caption{Compact P-trees}
-	\end{figure}
-}
-
-\frameT{Compact Representation of P-trees}{
-\begin{figure}[!ht]
-	\centering
-		\begin{subfigure}[b]{0.75\textwidth}
-		\centering
-		  \begin{tikzpicture}[->,>=stealth',
-  	     level 1/.style={sibling distance=4.3cm, level distance=28pt},
-  	     level 2/.style={sibling distance=2.2cm, level distance=28pt},
-  	     level 3/.style={sibling distance=1.0cm, level distance=28pt},
-  	     level 4/.style={sibling distance=0.5cm, level distance=28pt}]
-		    \node [main node,inner sep=1.7pt] (1){$\varphi_1$}
-		    child {node [main node,inner sep=1.7pt] (2) {$\varphi_2$}
-		      child {node [main node,inner sep=1.7pt] (3) {$\varphi_3$}
-		        child {node [main node,inner sep=1.7pt] (4) {$\varphi_4$}
-  	          child {node [rectangle,draw] (16) {}}
-  	          child {node [rectangle,draw] (17) {}}
-						}
-		        child {node [main node,inner sep=1.7pt] (5) {$\varphi_4$}
-  	          child {node [rectangle,draw] (18) {}}
-  	          child {node [rectangle,draw] (19) {}}
-						}
-					}
-		      child {node [main node,inner sep=1.7pt] (6) {$\varphi_3$}
-		        child {node [main node,inner sep=1.7pt] (7) {$\varphi_4$}
-  	          child {node [rectangle,draw] (20) {}}
-  	          child {node [rectangle,draw] (21) {}}
-						}
-		        child {node [main node,inner sep=1.7pt] (8) {$\varphi_4$}
-  	          child {node [rectangle,draw] (22) {}}
-  	          child {node [rectangle,draw] (23) {}}
-						}
-		      }
-				}
-		    child {node [main node,inner sep=1.7pt] (9) {$\varphi_2$}
-		      child {node [main node,inner sep=1.7pt] (10) {$\varphi_3$}
-		        child {node [main node,inner sep=1.7pt] (11) {$\varphi_4$}
-  	          child {node [rectangle,draw] (24) {}}
-  	          child {node [rectangle,draw] (25) {}}
-						}
-		        child {node [main node,inner sep=1.7pt] (12) {$\varphi_4$}
-  	          child {node [rectangle,draw] (26) {}}
-  	          child {node [rectangle,draw] (27) {}}
-						}
-					}
-		      child {node [main node,inner sep=1.7pt] (13) {$\varphi_3$}
-		        child {node [main node,inner sep=1.7pt] (14) {$\varphi_4$}
-  	          child {node [rectangle,draw] (28) {}}
-  	          child {node [rectangle,draw] (29) {}}
-						}
-		        child {node [main node,inner sep=1.7pt] (15) {$\varphi_4$}
-  	          child {node [rectangle,draw] (30) {}}
-  	          child {node [rectangle,draw] (31) {}}
-						}
-		      }
-				};
-		  \end{tikzpicture}
-			\caption{Full}
-		\end{subfigure}%
-		\begin{subfigure}[b]{0.2\textwidth}
-			\hspace{0.8cm}
-			\begin{tikzpicture}[->,>=stealth',
-  	     level 1/.style={sibling distance=4.3cm, level distance=28pt},
-  	     level 2/.style={sibling distance=2.2cm, level distance=28pt},
-  	     level 3/.style={sibling distance=1.0cm, level distance=28pt},
-  	     level 4/.style={sibling distance=0.5cm, level distance=28pt}]
-			  \node [main node,inner sep=1.7pt] (1){$\varphi_1$}
-			    child {node [main node,inner sep=1.7pt] (3) {$\varphi_2$}
-						child {node [main node,inner sep=1.7pt] (4) {$\varphi_3$}
-							child {node [main node,inner sep=1.7pt] (5) {$\varphi_4$}
-              	child {node [rectangle] (6) {} edge from parent[draw=none]}
-							}
-						}
-					};
-			\end{tikzpicture}
-			\caption{Compact}
-		\end{subfigure}
-  \caption{Compact P-trees}
-%	\vspace{-0.2cm}
-  \label{fig:LPT_full}
-\end{figure}
-}
-
-\frameT{Compact Representation of P-trees}{
-	A \tit{compact P-tree} over $\CD(\cI)$ is a binary tree where
-	\begin{enumerate}
-		\setlength\itemsep{0em}
-		\item every node is labeled with a Boolean formula over $\cI$, and
-	  \item every non-leaf node $t$ labeled with $\varphi$ has either
-	        two outgoing edges (Fig. (a)), or one 
-	    		outgoing edge pointing straight-down (Fig. (b)),
-					left (Fig. (c)), or right (Fig. (d)).
-	\end{enumerate}
-	
-	%\begin{figure}[ht!]
-	%  \centering
-	%    \includegraphics[width=0.9\textwidth]{figs/PTrees/ptrees.png}
-	%  \caption{Compact P-trees}
-	%\end{figure}
-
-	\begin{figure}[!ht]
-		\centering
-	  \begin{subfigure}[b]{0.3\textwidth}
-			\centering
-		  \begin{tikzpicture}[->,>=stealth',
-		    level1/.style={sibling distance=1.5cm}, level distance=35pt]
-		    \node [main node,inner sep=3pt,label={[xshift=0cm, yshift=0cm]$t$}] (1){$\varphi$}
-					child [edge from parent path ={(\tikzparentnode.-140) -- (\tikzchildnode.north)}] {
-						node [subtree,yshift=0.4cm] (2) {}}
-					child [edge from parent path ={(\tikzparentnode.-40) -- (\tikzchildnode.north)}] {
-						node [subtree,yshift=0.4cm] (3) {}};
-		  \end{tikzpicture}
-			\caption{\label{fig:compact1}}
-		\end{subfigure}%
-	  \begin{subfigure}[b]{0.2\textwidth}
-			\centering
-		  \begin{tikzpicture}[->,>=stealth',
-		    level1/.style={sibling distance=1.5cm}, level distance=35pt]
-			    \node [main node,inner sep=3pt,label={[xshift=0cm, yshift=0cm]$t$}] (1){$\varphi$}
-						child {node [subtree,yshift=0.4cm] (2) {}};
-		  \end{tikzpicture}
-			\caption{\label{fig:compact2}}
-		\end{subfigure}%
-	  \begin{subfigure}[b]{0.2\textwidth}
-			\centering
-			  \begin{tikzpicture}[->,>=stealth',
-			    level1/.style={sibling distance=1.5cm}, level distance=35pt]
-			    \node [main node,inner sep=3pt,label={[xshift=0cm, yshift=0cm]$t$}] (1){$\varphi$}
-						child [edge from parent path ={(\tikzparentnode.-140) -- (\tikzchildnode.north)}] {
-							node [subtree,yshift=0.4cm] (2) {}}
-		      		child {node [rectangle] (3) {} edge from parent[draw=none]
-			      };
-			  \end{tikzpicture}
-				\caption{\label{fig:compact3}}
-		\end{subfigure}%
-	  \begin{subfigure}[b]{0.2\textwidth}
-			\centering
-		  \begin{tikzpicture}[->,>=stealth',
-		    level1/.style={sibling distance=1.5cm}, level distance=35pt]
-			    \node [main node,inner sep=3pt,label={[xshift=0cm, yshift=0cm]$t$}] (1){$\varphi$}
-		      	child {node [rectangle] (2) {} edge from parent[draw=none]
-			      }
-						child [edge from parent path ={(\tikzparentnode.-40) -- (\tikzchildnode.north)}] {
-							node [subtree,yshift=0.4cm] (2) {}};
-		  \end{tikzpicture}
-			\caption{\label{fig:compact4}}
-		\end{subfigure}
-	  \caption{Compact P-trees}
-	%\vspace{-0.2cm}
-	  \label{fig:compact}
-	\end{figure}
-}
+%\frameT{Example: Preference Trees over Cars}{
+%	\begin{center}
+%    \tbf{BodyType}($X_1$): \{mvan($x_{1,1}$), sedan($x_{1,2}$), sport($x_{1,3}$), suv($x_{1,4}$)\}.\\
+%    \tbf{Color}($X_3$): \{black, blue, gray, red, white\}.\\
+%    \tbf{Price}($X_6$): \{low, med, high, vhigh\}.
+%	\end{center}
+%
+%\vspace{-0.2cm}
+%
+%	\begin{figure}[!ht]
+%	  \centering
+%      \begin{tikzpicture}[->,>=stealth',
+%	      level 1/.style={sibling distance=1.7cm, level distance=33pt},
+%	      level 2/.style={sibling distance=1cm, level distance=27pt}
+%	    ]
+%        \node [main node,inner sep=4pt] (1){$\varphi$}
+%          child {node [main node,inner sep=1pt] (2) {$x_{6,2}$}
+%            child {node [rectangle,draw] (3) {}}
+%            child {node [rectangle,draw] (4) {}}
+%                            }
+%          child {node [main node,inner sep=1pt] (5) {$x_{6,2}$}
+%            child {node [rectangle,draw] (6) {}
+%                                    }
+%            child {node [rectangle,draw] (7) {}
+%                                    }
+%          };
+%      \end{tikzpicture}
+%	  \caption{A P-tree over cars\footnotemark}
+%	\end{figure}
+%
+%\vspace{-1cm}
+%
+%	{\transparent{0} 
+%		\begin{center}
+%			$\textcolor{red}{Car2} \succ \textcolor{green}{Car1}$
+%		\end{center}
+%	}
+%
+%	\footnotetext{
+%		$\varphi=(x_{1,1} \land x_{3,5}) \lor (x_{1,2} \land x_{3,2})$.
+%	}
+%}
+%
+%\frameT{Example: Preference Trees over Cars}{
+%	\addtocounter{footnote}{-1}
+%	\begin{center}
+%    \tbf{BodyType}($X_1$): \{mvan($x_{1,1}$), sedan($x_{1,2}$), sport($x_{1,3}$), suv($x_{1,4}$)\}.\\
+%    \tbf{Color}($X_3$): \{black, blue, gray, red, white\}.\\
+%    \tbf{Price}($X_6$): \{low, med, high, vhigh\}.
+%	\end{center}
+%
+%\vspace{-0.2cm}
+%
+%	\begin{figure}[!ht]
+%	  \centering
+%      \begin{tikzpicture}[->,>=stealth',
+%	      level 1/.style={sibling distance=1.7cm, level distance=33pt},
+%	      level 2/.style={sibling distance=1cm, level distance=27pt}
+%	    ]
+%        \node [main node,inner sep=4pt] (1){$\varphi$}
+%          child [red] {node [main node,inner sep=1pt,black] (2) {$x_{6,2}$}
+%            child {node [rectangle,draw,fill] (3) {}}
+%            child [black] {node [rectangle,draw] (4) {}}
+%                            }
+%          child [green] {node [main node,inner sep=1pt,black] (5) {$x_{6,2}$}
+%            child {node [rectangle,draw,fill] (6) {}
+%                                    }
+%            child [black] {node [rectangle,draw] (7) {}
+%                                    }
+%          };
+%      \end{tikzpicture}
+%	  \caption{A P-tree over cars\footnotemark}
+%	\end{figure}
+%
+%\vspace{-1cm}
+%
+%	\begin{center}
+%		$\textcolor{red}{Car2} \succ \textcolor{green}{Car1}$
+%	\end{center}
+%
+%	\footnotetext{
+%		$\varphi=(x_{1,1} \land x_{3,5}) \lor (x_{1,2} \land x_{3,2})$.
+%	}
+%}
+%
+%\frameT{Compact Representation of P-trees}{
+%	\begin{center}
+%    \tbf{BodyType}($X_1$): \{mvan($x_{1,1}$), sedan($x_{1,2}$), sport($x_{1,3}$), suv($x_{1,4}$)\}.\\
+%    \tbf{Color}($X_3$): \{black, blue, gray, red, white\}.\\
+%    \tbf{Price}($X_6$): \{low, med, high, vhigh\}.
+%	\end{center}
+%
+%\vspace{-0.2cm}
+%
+%	\begin{figure}
+%	  \centering
+%		\begin{subfigure}[b]{0.45\textwidth}
+%	    \centering
+%      \begin{tikzpicture}[->,>=stealth',
+%	      level 1/.style={sibling distance=1.7cm, level distance=33pt},
+%	      level 2/.style={sibling distance=1cm, level distance=27pt}
+%	    ]
+%        \node [main node,inner sep=4pt] (1){$\varphi$}
+%          child {node [main node,inner sep=1pt] (2) {$x_{6,2}$}
+%            child {node [rectangle,draw] (3) {}}
+%            child {node [rectangle,draw] (4) {}}
+%                            }
+%          child {node [main node,inner sep=1pt] (5) {$x_{6,2}$}
+%            child {node [rectangle,draw] (6) {}
+%                                    }
+%            child {node [rectangle,draw] (7) {}
+%                                    }
+%          };
+%      \end{tikzpicture}
+%			\caption{Full}
+%		\end{subfigure}
+%		\begin{subfigure}[b]{0.25\textwidth}
+%			\hspace{1cm}
+%      \begin{tikzpicture}[->,>=stealth',
+%        level 1/.style={sibling distance=1.7cm, level distance=33pt},
+%        level 2/.style={sibling distance=1cm, level distance=27pt}]
+%        \node [main node,inner sep=4pt] (1){$\varphi$}
+%          child {node [main node,inner sep=1pt] (2) {$x_{6,2}$}
+%                    child {node [rectangle] (4) {} edge from parent[draw=none]}
+%                            };
+%      \end{tikzpicture}
+%			\caption{Compact}
+%		\end{subfigure}
+%	\caption{Compact P-trees}
+%	\end{figure}
+%}
+%
+%\frameT{Compact Representation of P-trees}{
+%\begin{figure}[!ht]
+%	\centering
+%		\begin{subfigure}[b]{0.75\textwidth}
+%		\centering
+%		  \begin{tikzpicture}[->,>=stealth',
+%  	     level 1/.style={sibling distance=4.3cm, level distance=28pt},
+%  	     level 2/.style={sibling distance=2.2cm, level distance=28pt},
+%  	     level 3/.style={sibling distance=1.0cm, level distance=28pt},
+%  	     level 4/.style={sibling distance=0.5cm, level distance=28pt}]
+%		    \node [main node,inner sep=1.7pt] (1){$\varphi_1$}
+%		    child {node [main node,inner sep=1.7pt] (2) {$\varphi_2$}
+%		      child {node [main node,inner sep=1.7pt] (3) {$\varphi_3$}
+%		        child {node [main node,inner sep=1.7pt] (4) {$\varphi_4$}
+%  	          child {node [rectangle,draw] (16) {}}
+%  	          child {node [rectangle,draw] (17) {}}
+%						}
+%		        child {node [main node,inner sep=1.7pt] (5) {$\varphi_4$}
+%  	          child {node [rectangle,draw] (18) {}}
+%  	          child {node [rectangle,draw] (19) {}}
+%						}
+%					}
+%		      child {node [main node,inner sep=1.7pt] (6) {$\varphi_3$}
+%		        child {node [main node,inner sep=1.7pt] (7) {$\varphi_4$}
+%  	          child {node [rectangle,draw] (20) {}}
+%  	          child {node [rectangle,draw] (21) {}}
+%						}
+%		        child {node [main node,inner sep=1.7pt] (8) {$\varphi_4$}
+%  	          child {node [rectangle,draw] (22) {}}
+%  	          child {node [rectangle,draw] (23) {}}
+%						}
+%		      }
+%				}
+%		    child {node [main node,inner sep=1.7pt] (9) {$\varphi_2$}
+%		      child {node [main node,inner sep=1.7pt] (10) {$\varphi_3$}
+%		        child {node [main node,inner sep=1.7pt] (11) {$\varphi_4$}
+%  	          child {node [rectangle,draw] (24) {}}
+%  	          child {node [rectangle,draw] (25) {}}
+%						}
+%		        child {node [main node,inner sep=1.7pt] (12) {$\varphi_4$}
+%  	          child {node [rectangle,draw] (26) {}}
+%  	          child {node [rectangle,draw] (27) {}}
+%						}
+%					}
+%		      child {node [main node,inner sep=1.7pt] (13) {$\varphi_3$}
+%		        child {node [main node,inner sep=1.7pt] (14) {$\varphi_4$}
+%  	          child {node [rectangle,draw] (28) {}}
+%  	          child {node [rectangle,draw] (29) {}}
+%						}
+%		        child {node [main node,inner sep=1.7pt] (15) {$\varphi_4$}
+%  	          child {node [rectangle,draw] (30) {}}
+%  	          child {node [rectangle,draw] (31) {}}
+%						}
+%		      }
+%				};
+%		  \end{tikzpicture}
+%			\caption{Full}
+%		\end{subfigure}%
+%		\begin{subfigure}[b]{0.2\textwidth}
+%			\hspace{0.8cm}
+%			\begin{tikzpicture}[->,>=stealth',
+%  	     level 1/.style={sibling distance=4.3cm, level distance=28pt},
+%  	     level 2/.style={sibling distance=2.2cm, level distance=28pt},
+%  	     level 3/.style={sibling distance=1.0cm, level distance=28pt},
+%  	     level 4/.style={sibling distance=0.5cm, level distance=28pt}]
+%			  \node [main node,inner sep=1.7pt] (1){$\varphi_1$}
+%			    child {node [main node,inner sep=1.7pt] (3) {$\varphi_2$}
+%						child {node [main node,inner sep=1.7pt] (4) {$\varphi_3$}
+%							child {node [main node,inner sep=1.7pt] (5) {$\varphi_4$}
+%              	child {node [rectangle] (6) {} edge from parent[draw=none]}
+%							}
+%						}
+%					};
+%			\end{tikzpicture}
+%			\caption{Compact}
+%		\end{subfigure}
+%  \caption{Compact P-trees}
+%%	\vspace{-0.2cm}
+%  \label{fig:LPT_full}
+%\end{figure}
+%}
+%
+%\frameT{Compact Representation of P-trees}{
+%	A \tit{compact P-tree} over $\CD(\cI)$ is a binary tree where
+%	\begin{enumerate}
+%		\setlength\itemsep{0em}
+%		\item every node is labeled with a Boolean formula over $\cI$, and
+%	  \item every non-leaf node $t$ labeled with $\varphi$ has either
+%	        two outgoing edges (Fig. (a)), or one 
+%	    		outgoing edge pointing straight-down (Fig. (b)),
+%					left (Fig. (c)), or right (Fig. (d)).
+%	\end{enumerate}
+%	
+%	%\begin{figure}[ht!]
+%	%  \centering
+%	%    \includegraphics[width=0.9\textwidth]{figs/PTrees/ptrees.png}
+%	%  \caption{Compact P-trees}
+%	%\end{figure}
+%
+%	\begin{figure}[!ht]
+%		\centering
+%	  \begin{subfigure}[b]{0.3\textwidth}
+%			\centering
+%		  \begin{tikzpicture}[->,>=stealth',
+%		    level1/.style={sibling distance=1.5cm}, level distance=35pt]
+%		    \node [main node,inner sep=3pt,label={[xshift=0cm, yshift=0cm]$t$}] (1){$\varphi$}
+%					child [edge from parent path ={(\tikzparentnode.-140) -- (\tikzchildnode.north)}] {
+%						node [subtree,yshift=0.4cm] (2) {}}
+%					child [edge from parent path ={(\tikzparentnode.-40) -- (\tikzchildnode.north)}] {
+%						node [subtree,yshift=0.4cm] (3) {}};
+%		  \end{tikzpicture}
+%			\caption{\label{fig:compact1}}
+%		\end{subfigure}%
+%	  \begin{subfigure}[b]{0.2\textwidth}
+%			\centering
+%		  \begin{tikzpicture}[->,>=stealth',
+%		    level1/.style={sibling distance=1.5cm}, level distance=35pt]
+%			    \node [main node,inner sep=3pt,label={[xshift=0cm, yshift=0cm]$t$}] (1){$\varphi$}
+%						child {node [subtree,yshift=0.4cm] (2) {}};
+%		  \end{tikzpicture}
+%			\caption{\label{fig:compact2}}
+%		\end{subfigure}%
+%	  \begin{subfigure}[b]{0.2\textwidth}
+%			\centering
+%			  \begin{tikzpicture}[->,>=stealth',
+%			    level1/.style={sibling distance=1.5cm}, level distance=35pt]
+%			    \node [main node,inner sep=3pt,label={[xshift=0cm, yshift=0cm]$t$}] (1){$\varphi$}
+%						child [edge from parent path ={(\tikzparentnode.-140) -- (\tikzchildnode.north)}] {
+%							node [subtree,yshift=0.4cm] (2) {}}
+%		      		child {node [rectangle] (3) {} edge from parent[draw=none]
+%			      };
+%			  \end{tikzpicture}
+%				\caption{\label{fig:compact3}}
+%		\end{subfigure}%
+%	  \begin{subfigure}[b]{0.2\textwidth}
+%			\centering
+%		  \begin{tikzpicture}[->,>=stealth',
+%		    level1/.style={sibling distance=1.5cm}, level distance=35pt]
+%			    \node [main node,inner sep=3pt,label={[xshift=0cm, yshift=0cm]$t$}] (1){$\varphi$}
+%		      	child {node [rectangle] (2) {} edge from parent[draw=none]
+%			      }
+%						child [edge from parent path ={(\tikzparentnode.-40) -- (\tikzchildnode.north)}] {
+%							node [subtree,yshift=0.4cm] (2) {}};
+%		  \end{tikzpicture}
+%			\caption{\label{fig:compact4}}
+%		\end{subfigure}
+%	  \caption{Compact P-trees}
+%	%\vspace{-0.2cm}
+%	  \label{fig:compact}
+%	\end{figure}
+%}
 
 %\frameT{Relative Expressivity of Preference Languages}{
 %	\begin{center}
