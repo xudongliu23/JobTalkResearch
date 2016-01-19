@@ -1,10 +1,9 @@
 \frameT{Outline}{
   \begin{enumerate}
-    \item The languages of P-trees, PLP-trees, and LP-trees
+    \item The languages of PLP-trees and LP-trees
     {\transparent{0.2} \item Learning preference models in case of PLP-trees}
     {\transparent{0.2} \item Reasoning with preferences:
       \begin{itemize}
-        \item Preference optimization in case of P-trees
         \item Computing winners and ``strong" outcomes when votes are LP-trees
         \item Application in trip planning
       \end{itemize}}
@@ -116,19 +115,19 @@
 %		Total preorder
 %	\end{center}
 %}
-
-\frameT{Example: The Cars Domain}{
-  \begin{enumerate}
-    \item \tbf{BodyType}($X_1$): \{mvan($x_{1,1}$), sedan($x_{1,2}$), sport($x_{1,3}$), suv($x_{1,4}$)\}.
-    \item \tbf{Capacity}($X_2$): \{2, 5, 7m\}.
-    \item \tbf{Color}($X_3$): \{black, blue, gray, red, white\}.
-    \item \tbf{LuggageSize}($X_4$): \{big, med, small\}.
-    \item \tbf{Make}($X_5$): \{bmw, ford, honda, vw\}.
-    \item \tbf{Price}($X_6$): \{low, med, high, vhigh\}.
-    \item \tbf{Safety}($X_7$): \{low, med, high\}.
-  \end{enumerate}
-}
-
+%
+%\frameT{Example: The Cars Domain}{
+%  \begin{enumerate}
+%    \item \tbf{BodyType}($X_1$): \{mvan($x_{1,1}$), sedan($x_{1,2}$), sport($x_{1,3}$), suv($x_{1,4}$)\}.
+%    \item \tbf{Capacity}($X_2$): \{2, 5, 7m\}.
+%    \item \tbf{Color}($X_3$): \{black, blue, gray, red, white\}.
+%    \item \tbf{LuggageSize}($X_4$): \{big, med, small\}.
+%    \item \tbf{Make}($X_5$): \{bmw, ford, honda, vw\}.
+%    \item \tbf{Price}($X_6$): \{low, med, high, vhigh\}.
+%    \item \tbf{Safety}($X_7$): \{low, med, high\}.
+%  \end{enumerate}
+%}
+%
 %\frameT{Example: Preference Trees over Cars}{
 %	\begin{center}
 %    \tbf{BodyType}($X_1$): \{mvan($x_{1,1}$), sedan($x_{1,2}$), sport($x_{1,3}$), suv($x_{1,4}$)\}.\\
@@ -487,6 +486,104 @@
 %	\end{enumerate}
 %}
 
+\frameT{Example: The Cars Domain}{
+  \begin{enumerate}
+    \item \tbf{BodyType}(B): \{mvan, sedan, sport, suv\}.
+    \item \tbf{Capacity}(C): \{2, 5, 7m\}.
+    \item \tbf{Color}(O): \{black, blue, gray, red, white\}.
+    \item \tbf{LuggageSize}(L): \{big, med, small\}.
+    \item \tbf{Make}(M): \{bmw, ford, honda, vw\}.
+    \item \tbf{Price}(P): \{low, med, high, vhigh\}.
+    \item \tbf{Safety}(S): \{low, med, high\}.
+  \end{enumerate}
+}
+
+\frameT{Partial Lexicographic Preference Trees}{
+	A \tit{PLP-tree} over $\CD(\cI)$ is a tree, where
+	\begin{enumerate}
+		\setlength\itemsep{0em}
+		\item every non-leaf node $t$ is labeled with an attribute $\Attr(t)$ in $\cI$,
+	  \item every non-leaf node $t$ has $|\Dom(\Attr(t))|$ outgoing edges labeled
+					with a value of $\Attr(t)$, and
+		\item every attribute appears \tit{at most} once on every branch.
+	\end{enumerate}
+
+	\begin{figure}[!ht]
+	  \centering
+      \begin{tikzpicture}[->,>=stealth',
+	      level 1/.style={sibling distance=2cm, level distance=33pt},
+	      level 2/.style={sibling distance=0.7cm, level distance=27pt}
+	    ]
+        \node [main node,inner sep=2pt] (1){S}
+          child {node [main node,inner sep=2pt] (2) {C}
+            child {node [rectangle,draw] (3) {} edge from parent node[left]  {\tiny{5}}}
+            child {node [rectangle,draw] (4) {} edge from parent node[left]  {\tiny{7}}}
+            child {node [rectangle,draw] (5) {} edge from parent node[right] {\tiny{2}}}
+          edge from parent node[left] {\small{h}}}
+          child {node [main node,inner sep=2pt] (6) {C}
+            child {node [rectangle,draw] (7) {} edge from parent node[left]  {\tiny{5}}}
+            child {node [rectangle,draw] (8) {} edge from parent node[left]  {\tiny{7}}}
+            child {node [rectangle,draw] (9) {} edge from parent node[right] {\tiny{2}}}
+          edge from parent node[left] {\small{m}}}
+          child {node [main node,inner sep=2pt] (10) {C}
+            child {node [rectangle,draw] (11) {} edge from parent node[left]  {\tiny{5}}}
+            child {node [rectangle,draw] (12) {} edge from parent node[left]  {\tiny{7}}}
+            child {node [rectangle,draw] (13) {} edge from parent node[right] {\tiny{2}}}
+          edge from parent node[right] {\small{l}}};
+      \end{tikzpicture}
+	  \caption{A PLP-tree over cars}
+	\end{figure}
+
+\vspace{-1cm}
+
+	{\transparent{0} 
+		\begin{center}
+			$\textcolor{red}{Car1} \succ \textcolor{green}{Car2}$
+		\end{center}
+	}
+}
+
+\frameT{A Partial Lexicographic Preference Tree over Cars}{
+  \begin{figure}[ht!]
+    \centering
+      \includegraphics[width=0.95\textwidth]{figs/Cars/individual.png}
+  \end{figure}
+
+\vspace{-0.5cm}
+
+	\begin{figure}[!ht]
+	  \centering
+      \begin{tikzpicture}[->,>=stealth',
+	      level 1/.style={sibling distance=2cm, level distance=33pt},
+	      level 2/.style={sibling distance=0.7cm, level distance=27pt}
+	    ]
+        \node [main node,inner sep=2pt] (1){S}
+          child {node [main node,inner sep=2pt] (2) {C}
+            child {node [rectangle,draw] (3) {} edge from parent node[left]  {\tiny{5}}}
+            child {node [rectangle,draw] (4) {} edge from parent node[left]  {\tiny{7}}}
+            child {node [rectangle,draw] (5) {} edge from parent node[right] {\tiny{2}}}
+          edge from parent node[left] {\small{h}}}
+          child {node [main node,inner sep=2pt] (6) {C}
+            child [green] {node [rectangle,draw] (7) {} edge from parent node[left]  {\tiny{5}}}
+            child [red] {node [rectangle,draw] (8) {} edge from parent node[left]  {\tiny{7}}}
+            child {node [rectangle,draw] (9) {} edge from parent node[right] {\tiny{2}}}
+          edge from parent node[left] {\small{m}}}
+          child {node [main node,inner sep=2pt] (10) {C}
+            child {node [rectangle,draw] (11) {} edge from parent node[left]  {\tiny{5}}}
+            child {node [rectangle,draw] (12) {} edge from parent node[left]  {\tiny{7}}}
+            child {node [rectangle,draw] (13) {} edge from parent node[right] {\tiny{2}}}
+          edge from parent node[right] {\small{l}}};
+      \end{tikzpicture}
+	  \caption{A PLP-tree over cars}
+	\end{figure}
+
+\vspace{-1cm}
+
+	\begin{center}
+		$\textcolor{green}{Car2} \succ \textcolor{red}{Car1}$
+	\end{center}
+}
+
 \frameT{Partial Lexicographic Preference Trees (PLP-Tree)}{
 	\begin{figure}
 	  \centering
@@ -601,36 +698,52 @@
 \frameT{Partial Lexicographic Preference Trees (PLP-Tree)}{
 	\begin{figure}
 	  \centering
-		\begin{subfigure}[b]{0.55\textwidth}
+		\begin{subfigure}[b]{0.95\textwidth}
 	    \centering
       \begin{tikzpicture}[->,>=stealth',
-	      level 1/.style={sibling distance=2cm, level distance=33pt},
-	      level 2/.style={sibling distance=0.7cm, level distance=27pt},
+	      level 1/.style={sibling distance=2.9cm, level distance=33pt},
+	      level 2/.style={sibling distance=1.8cm, level distance=27pt},
 	      level 3/.style={sibling distance=0.7cm, level distance=27pt}
 	    ]
         \node [main node,inner sep=2pt] (1){S}
           child {node [main node,inner sep=2pt] (2) {C}
-            child {node [main node,inner sep=2pt] (4) {L} edge from parent node[left]  {\tiny{5}}}
             child {node [main node,inner sep=2pt] (3) {L}
             	child {node [rectangle,draw] (14) {} edge from parent node[left]  {\tiny{b}}}
             	child {node [rectangle,draw] (15) {} edge from parent node[left]  {\tiny{m}}}
             	child {node [rectangle,draw] (16) {} edge from parent node[right] {\tiny{s}}}
+						edge from parent node[left]  {\tiny{5}}}
+            child {node [main node,inner sep=2pt] (4) {L}
+            	child {node [rectangle,draw] (17) {} edge from parent node[left]  {\tiny{b}}}
+            	child {node [rectangle,draw] (18) {} edge from parent node[left]  {\tiny{m}}}
+            	child {node [rectangle,draw] (19) {} edge from parent node[right] {\tiny{s}}}
 						edge from parent node[left]  {\tiny{7}}}
-            child {node [main node,inner sep=2pt] (5) {L} edge from parent node[right] {\tiny{2}}}
+            child {node [main node,inner sep=2pt] (5) {L}
+            	child {node [rectangle,draw] (20) {} edge from parent node[left]  {\tiny{b}}}
+            	child {node [rectangle,draw] (21) {} edge from parent node[left]  {\tiny{m}}}
+            	child {node [rectangle,draw] (22) {} edge from parent node[right] {\tiny{s}}}
+						edge from parent node[left]  {\tiny{2}}}
           edge from parent node[left] {\small{h}}}
           child {node [rectangle,draw] (6) {} edge from parent node[left] {\small{m}}}
           child {node [main node,inner sep=2pt] (10) {L}
-            child {node [main node,inner sep=2pt] (11) {C} edge from parent node[left]  {\tiny{b}}}
+            child {node [main node,inner sep=2pt] (11) {C} 
+            	child {node [rectangle,draw] (23) {} edge from parent node[left]  {\tiny{5}}}
+            	child {node [rectangle,draw] (24) {} edge from parent node[left]  {\tiny{7}}}
+            	child {node [rectangle,draw] (25) {} edge from parent node[right] {\tiny{2}}}
+						edge from parent node[left]  {\tiny{b}}}
             child {node [main node,inner sep=2pt] (12) {C} 
-            	child {node [rectangle,draw] (17) {} edge from parent node[left]  {\tiny{5}}}
-            	child {node [rectangle,draw] (18) {} edge from parent node[left]  {\tiny{7}}}
-            	child {node [rectangle,draw] (19) {} edge from parent node[right] {\tiny{2}}}
+            	child {node [rectangle,draw] (26) {} edge from parent node[left]  {\tiny{5}}}
+            	child {node [rectangle,draw] (27) {} edge from parent node[left]  {\tiny{7}}}
+            	child {node [rectangle,draw] (28) {} edge from parent node[right] {\tiny{2}}}
 						edge from parent node[left]  {\tiny{m}}}
-            child {node [main node,inner sep=2pt] (13) {C} edge from parent node[right] {\tiny{s}}}
+            child {node [main node,inner sep=2pt] (13) {C} 
+            	child {node [rectangle,draw] (29) {} edge from parent node[left]  {\tiny{5}}}
+            	child {node [rectangle,draw] (30) {} edge from parent node[left]  {\tiny{7}}}
+            	child {node [rectangle,draw] (31) {} edge from parent node[right] {\tiny{2}}}
+						edge from parent node[left]  {\tiny{s}}}
           edge from parent node[right] {\small{l}}};
       \end{tikzpicture}
 			\caption{Full}
-		\end{subfigure}
+		\end{subfigure}\\
 		\begin{subfigure}[b]{0.35\textwidth}
 			\centering
       \begin{tikzpicture}[->,>=stealth',
@@ -653,7 +766,7 @@
 	  	  \node[main node,inner sep=2pt] (5) [below of=4] {C};
 	  	  \node[rectangle,draw,inner sep=2pt] at (1.6,-1.7) {$5\!\! >\!\! 7\!\! >\!\! 2$};
 
-	  	  \node[rectangle] (6) [below of=5] {};
+	  	  %\node[rectangle] (6) [below of=5] {};
 
 	  	  \path[every node/.style={font=\sffamily\small}]
 	  	    (1) edge [left]  node{\tiny h} (2)
@@ -670,36 +783,52 @@
 \frameT{Partial Lexicographic Preference Trees (PLP-Tree)}{
 	\begin{figure}
 	  \centering
-		\begin{subfigure}[b]{0.55\textwidth}
+		\begin{subfigure}[b]{0.95\textwidth}
 	    \centering
       \begin{tikzpicture}[->,>=stealth',
-	      level 1/.style={sibling distance=2cm, level distance=33pt},
-	      level 2/.style={sibling distance=0.7cm, level distance=27pt},
+	      level 1/.style={sibling distance=2.9cm, level distance=33pt},
+	      level 2/.style={sibling distance=1.8cm, level distance=27pt},
 	      level 3/.style={sibling distance=0.7cm, level distance=27pt}
 	    ]
         \node [main node,inner sep=2pt] (1){S}
           child {node [main node,inner sep=2pt] (2) {C}
-            child {node [main node,inner sep=2pt] (4) {L} edge from parent node[left]  {\tiny{5}}}
             child {node [main node,inner sep=2pt] (3) {L}
-            	child {node [rectangle,draw] (14) {} edge from parent node[left]  {\tiny{b}}}
-            	child {node [rectangle,draw] (15) {} edge from parent node[left]  {\tiny{m}}}
+            	child {node [rectangle,draw] (14) {} edge from parent node[left]  {\tiny{m}}}
+            	child {node [rectangle,draw] (15) {} edge from parent node[left]  {\tiny{b}}}
             	child {node [rectangle,draw] (16) {} edge from parent node[right] {\tiny{s}}}
+						edge from parent node[left]  {\tiny{5}}}
+            child {node [main node,inner sep=2pt] (4) {L}
+            	child {node [rectangle,draw] (17) {} edge from parent node[left]  {\tiny{b}}}
+            	child {node [rectangle,draw] (18) {} edge from parent node[left]  {\tiny{m}}}
+            	child {node [rectangle,draw] (19) {} edge from parent node[right] {\tiny{s}}}
 						edge from parent node[left]  {\tiny{7}}}
-            child {node [main node,inner sep=2pt] (5) {L} edge from parent node[right] {\tiny{2}}}
+            child {node [main node,inner sep=2pt] (5) {L}
+            	child {node [rectangle,draw] (20) {} edge from parent node[left]  {\tiny{s}}}
+            	child {node [rectangle,draw] (21) {} edge from parent node[left]  {\tiny{m}}}
+            	child {node [rectangle,draw] (22) {} edge from parent node[right] {\tiny{b}}}
+						edge from parent node[left]  {\tiny{2}}}
           edge from parent node[left] {\small{h}}}
           child {node [rectangle,draw] (6) {} edge from parent node[left] {\small{m}}}
           child {node [main node,inner sep=2pt] (10) {L}
-            child {node [main node,inner sep=2pt] (11) {C} edge from parent node[left]  {\tiny{b}}}
+            child {node [main node,inner sep=2pt] (11) {C} 
+            	child {node [rectangle,draw] (23) {} edge from parent node[left]  {\tiny{7}}}
+            	child {node [rectangle,draw] (24) {} edge from parent node[left]  {\tiny{5}}}
+            	child {node [rectangle,draw] (25) {} edge from parent node[right] {\tiny{2}}}
+						edge from parent node[left]  {\tiny{b}}}
             child {node [main node,inner sep=2pt] (12) {C} 
-            	child {node [rectangle,draw] (17) {} edge from parent node[left]  {\tiny{5}}}
-            	child {node [rectangle,draw] (18) {} edge from parent node[left]  {\tiny{7}}}
-            	child {node [rectangle,draw] (19) {} edge from parent node[right] {\tiny{2}}}
+            	child {node [rectangle,draw] (26) {} edge from parent node[left]  {\tiny{5}}}
+            	child {node [rectangle,draw] (27) {} edge from parent node[left]  {\tiny{7}}}
+            	child {node [rectangle,draw] (28) {} edge from parent node[right] {\tiny{2}}}
 						edge from parent node[left]  {\tiny{m}}}
-            child {node [main node,inner sep=2pt] (13) {C} edge from parent node[right] {\tiny{s}}}
+            child {node [main node,inner sep=2pt] (13) {C} 
+            	child {node [rectangle,draw] (29) {} edge from parent node[left]  {\tiny{2}}}
+            	child {node [rectangle,draw] (30) {} edge from parent node[left]  {\tiny{5}}}
+            	child {node [rectangle,draw] (31) {} edge from parent node[right] {\tiny{7}}}
+						edge from parent node[left]  {\tiny{s}}}
           edge from parent node[right] {\small{l}}};
       \end{tikzpicture}
 			\caption{Full}
-		\end{subfigure}
+		\end{subfigure}\\
 		\begin{subfigure}[b]{0.4\textwidth}
 			\centering
       \begin{tikzpicture}[->,>=stealth',
@@ -714,29 +843,29 @@
 	  	  \node[rectangle,draw,inner sep=2pt] at (-1.6,-0.7) {$5\!\! >\!\! 7\!\! >\!\! 2$};
 
 	  	  \node[main node,inner sep=2pt] (3) [below of=2] {L};
-	    	\node[rectangle split, rectangle split parts=3, draw,inner sep=2pt,font=\sffamily\small] at (-1.8,-2)
+	    	\node[rectangle split, rectangle split parts=3, draw,inner sep=2pt,font=\sffamily\small] at (-1.8,-1.7)
 	    	    {
-							$2\!:\!b \!\!>\!\! m\!\!>\!\! s$
+							$2\!:\!s \!\!>\!\! m\!\!>\!\! b$
 	    	      \nodepart{second}
-							$5\!:\!m \!\!>\!\! 5\!\!>\!\! 2$
+							$5\!:\!m \!\!>\!\! b\!\!>\!\! s$
 	    	      \nodepart{third}
-							$7\!:\!2 \!\!>\!\! 5\!\!>\!\! 7$
+							$7\!:\!b \!\!>\!\! m\!\!>\!\! s$
 	    	    };
 	  	
 	  	  \node[main node,inner sep=2pt] (4) [below right of=1] {L};
 	  	  \node[rectangle,draw,inner sep=2pt] at (1.6,-0.7) {$b\!\! >\!\! m\!\! >\!\! s$};
 	  	
 	  	  \node[main node,inner sep=2pt] (5) [below of=4] {C};
-	    	\node[rectangle split, rectangle split parts=3, draw,inner sep=2pt,font=\sffamily\small] at (1.8,-2)
+	    	\node[rectangle split, rectangle split parts=3, draw,inner sep=2pt,font=\sffamily\small] at (1.8,-1.7)
 	    	    {
-							$b\!:\!5 \!\!>\!\! 7\!\!>\!\! 2$
+							$b\!:\!7 \!\!>\!\! 5\!\!>\!\! 2$
 	    	      \nodepart{second}
-							$m\!:\!7 \!\!>\!\! 5\!\!>\!\! 2$
+							$m\!:\!5 \!\!>\!\! 7\!\!>\!\! 2$
 	    	      \nodepart{third}
 							$s\!:\!2 \!\!>\!\! 5\!\!>\!\! 7$
 	    	    };
 
-	  	  \node[rectangle] (6) [below of=5] {};
+	  	  %\node[rectangle] (6) [below of=5] {};
 
 	  	  \path[every node/.style={font=\sffamily\small}]
 	  	    (1) edge [left]  node{\tiny h} (2)
@@ -746,6 +875,7 @@
 	  	\end{tikzpicture}
 			\caption{Compact}
 		\end{subfigure}
+	\vspace{-0.2cm}
 	\caption{Conditional Importance \& Conditional Preference (CICP)}
 	\end{figure}
 }
@@ -756,7 +886,7 @@
     \item An \tit{LP-tree} $\cL$ over $\CD(\cI)$ is a PLP-tree, where
     \begin{itemize}
       \item each attribute appears \tbf{exactly once} on every path from the root to a leaf.
-			\item Unlike P-trees and PLP-trees, an LP-tree induces a total order.
+			\item Unlike PLP-trees, an LP-tree induces a total order.
     \end{itemize}
   \end{enumerate}
 }

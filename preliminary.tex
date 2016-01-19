@@ -273,19 +273,19 @@
 \frameT{Combinatorial Domains}
 {
 	\begin{block}{Combinatorial Domains}
-	  Let $V$ be a finite set of variables $\{X_1,\ldots,X_p\}$,
+	  Let $\cI$ be a finite set of attributes $\{X_1,\ldots,X_p\}$,
 	  associated with a set of finite domains $\{\Dom(X_1),\ldots,\Dom(X_p)\}$ for each
-	  variable $X_i$.
-	  A \tit{combinatorial domain} $\CD(V)$ is a set of \tit{outcomes}
+	  attribute $X_i$.
+	  A \tit{combinatorial domain} $\CD(\cI)$ is a set of \tit{outcomes}
 		described by combinations of values from $\Dom(X_i)$:
 	  \begin{center}
-	    $\CD(V) = \prod_{X_i \in V} \Dom(X_i)$.
+	    $\CD(\cI) = \prod_{X_i \in V} \Dom(X_i)$.
 	  \end{center}
 	\end{block}
 }
 
 \frameT{Combinatorial Domains: Example}{
-	Domain of cars over set $V$ of $p$ binary variables:
+	Domain of cars over set $V$ of $p$ binary attributes:
 	\begin{enumerate}
 		\item \tbf{BodyType}: \{mvan, sedan\}.
 		\item \tbf{Capacity}: \{5, 7m\}.
