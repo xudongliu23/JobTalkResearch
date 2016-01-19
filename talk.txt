@@ -9,44 +9,43 @@ combinatorial domains.
 P2:
 Why are preferences important?  Why do we care about preferences?
 Well, preferences are everywhere.
-People give ratings to items online, such as a movie or a wireless mouse.
+People give ratings to items online.
+It could be a movie on IMDB or a wireless mouse on Amazon.
 The ratings are essentially people's preferences.
-Usually the higher the score or the more stars, the more preferred is the item.
-Sometimes our preferences are taken into account before we even
-realize it.  For instance, google search and google scholar customize
-the search results, so that even for the same search key words, different
-users may end up with different lists of webpage links.
-On the social scale, we cast our votes in an election where a winning candidate,
-e.g., a representative, or a president, needs to be selected.
+Usually the higher the rating, the more preferred is the item.
+Apparently, Google collects our behavioral data, for instance,
+the links we clicked, and customizes the search results.
+Chances are, even with same search keywords, different users
+could end up with different, if not totally different results.
+On the social scale, we cast our ballots in an election where 
+a winning candidate needs to be selected.
 The votes are basically preferences over a set of candidates.
 
 P3:
-Now that we saw that preferences are everywhere and are important.
-We need to know how people may describe preferences so that we,
-as computer scientists, can express them mathematically, so that
-computers will be able to model, learn and reason with preferences.
+How can we describe preferences? Especially, how can we express
+preferences over complex objects like cars that are represented
+by vectors of many attribute values?
 Let us look at these two cars.  On the left, we have a gray Honda minivan;
 on the right, we have a blue VW sedan.  Let's call them simply Car1 and Car2.
 Now we may say preferences over these two cars, such as I prefer
-Car1 to Car2, I like Car1 and Car2 equally, or because of incomplete information
-about them I cannot decide my preference.
+Car1 to Car2, I like Car1 and Car2 equally, or I cannot decide my preference.
 However, in practice, this incomparability barely is the case; because one
-is able to tell the order once all the information needed is gathered.
+can tell the order once all the information needed is gathered.
 
 P4:
 In general, we express preferences either quantitatively or qualitatively.
 In the quantitative approach, we assign numeric values to the objects,
-and they are ordered based on the ordering of real numbers.
+and they are ordered based on the ordering of the numbers.
 There, we typically design utility functions that maps the domains of
-attributes to numbers.  E.g., for the BodyType attribute we may assign 5 to
-minivan and 8 to sedan, for the Color attribute we may give 6 to gray and 7 
-blue, etc.  Eventually, we collect the total and thus the preference follows.
+attributes to numbers.  E.g., for the BodyType attribute I assign 7 to
+minivan and 5 to sedan, for the Color attribute I give 4 to gray and 8
+blue, etc.  Collecting the total, the preference follows.
 However, in many cases, it is difficulty to come up with accurate
 utility functions and it can be too much work for complex domains that contain
 too many values to consider.
 This is when we resort to yet another approach of describing preferences, namely,
-qualitative approach.  Here, we focus on the relative desirability of properties of the
-cars.  For instance, I may specify that I prefer minivans to sedans; that is,
+qualitative approach.  Here, we focus on the desired and undesired properties of the
+cars.  For instance, I prefer minivans to sedans; that is,
 the car being a minivan is a more desired property than it being a sedan.
 Sometimes, these qualitative preference statements are conditional.
 E.g., if I am considering sedan cars, I prefer blue ones to gray ones;
@@ -54,3 +53,66 @@ if I am considering minivans, I like gray more than blue; etc.
 The idea here is that, from not very many qualitative preference statements, 
 we want to build a preference model that could order all cars in the given domain.
 My research was mostly about qualitative preferences.
+
+P5:
+Before I formally discuss preference relations, let us quickly go through
+some math preliminaries on relations and orderings.
+A binary relation R over a set of objects O is a set of ordered pairs of
+objects in O.
+Properties of interest pertaining preferences are reflexivity,
+irreflexivity, totality, transitivity, ...
+Reflexivity is important for defining weak preferences because we want to
+say that object o is weakly preferred to itself.
+Irreflexivity is important for defining strict preferences because
+we want to say that object o is not strictly preferred to itself.
+Totality says that, given two objects, either o1 is better o2 or
+o2 is better than o1.
+Antisymmetry essentially says there are no equivalent objects.
+
+P6:
+Now let's define orderings.
+Most generally, a partial preorder is a binary relation that is relexive
+and transitive.
+Looking at this example here over 8 objects,
+we see it is a directed graph where nodes are clusters of equivalent objects,
+and edges show the relations. But intuitively, an edge from node A to node B
+means improvement of preference, that is, B is preferred to A.
+A total preorder is a partial preorder that is total.
+With totality, the incomparability of partial preorders is gone in total preorders.
+
+P7:
+Then, we have partial order that is a partial preorder and antisymmetric.
+Antisymmetry eliminates equivalent objects.
+Finally, we have total order that is a partial order and total.
+Like before, totality removes incomparability from partial orders.
+
+P8:
+Now we define preference relations as total preorders.
+We say that o1 is weakly preferred to o2 if o1 is at least as good as o2.
+o1 is strictly preferred to o2 if o1 is weakly preferred to o2, but not
+vice versa.
+o1 is equivalent with o2 if both o1 is weakly preferred to o2 and o2 is
+weakly preferred to o1.
+In this example, we see that o1 is weakly preferred to o5 and o5 is
+weakly preferred to o1 as they are equivalent in a same cluster.
+We can also see that o2 is strictly better than o4.
+My research is mostly about preference models, such as preference trees,
+over combinatorial domains that represent total preorders.
+
+P9:
+What are combinatorial domains? You asked.
+It is essentially a Cartesian product of attribute domains.
+So, we have a finite set of attributes, each of which has a finite
+domain of values.  A CD is a set of combinations of values for the attributes.
+
+P10:
+Due to the combinatorial property, a CD can blow up quickly as the number of
+attributes grows.  For instance, let's assume for a moment we have p binary 
+attributes for cars.  The domain of cars contains exponentially many cars.
+It is too many to enumerate all of them in terms of a total preorder.
+Thus, my research focuses on qualitative preference formalisms that can
+compactly model total preorders over combinatorial domains.
+
+P11:
+In this talk, I will stick to the domain of cars that has these 7 multi-valued
+attributes.
