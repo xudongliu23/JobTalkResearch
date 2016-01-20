@@ -536,11 +536,52 @@
 
 \vspace{-1cm}
 
-	{\transparent{0} 
-		\begin{center}
-			$\textcolor{red}{Car1} \succ \textcolor{green}{Car2}$
-		\end{center}
-	}
+	\begin{center}
+		{\transparent{0} Total preorder}
+	\end{center}
+}
+
+\frameT{Partial Lexicographic Preference Trees (PLP-Trees)}{
+	A \tit{PLP-tree} over $\CD(\cI)$ is a tree, where
+	\begin{enumerate}
+		\setlength\itemsep{0em}
+		\item every non-leaf node $t$ is labeled with an attribute $\Attr(t)$ in $\cI$,
+	  \item every non-leaf node $t$ has $|\Dom(\Attr(t))|$ outgoing edges labeled
+					with a value of $\Attr(t)$, and
+		\item every attribute appears \tit{at most} once on every branch.
+	\end{enumerate}
+
+	\begin{figure}[!ht]
+	  \centering
+      \begin{tikzpicture}[->,>=stealth',
+	      level 1/.style={sibling distance=2cm, level distance=33pt},
+	      level 2/.style={sibling distance=0.7cm, level distance=27pt}
+	    ]
+        \node [main node,inner sep=2pt] (1){S}
+          child {node [main node,inner sep=2pt] (2) {C}
+            child {node [rectangle,draw] (3) {} edge from parent node[left]  {\tiny{5}}}
+            child {node [rectangle,draw] (4) {} edge from parent node[left]  {\tiny{7}}}
+            child {node [rectangle,draw] (5) {} edge from parent node[right] {\tiny{2}}}
+          edge from parent node[left] {\small{h}}}
+          child {node [main node,inner sep=2pt] (6) {C}
+            child {node [rectangle,draw] (7) {} edge from parent node[left]  {\tiny{5}}}
+            child {node [rectangle,draw] (8) {} edge from parent node[left]  {\tiny{7}}}
+            child {node [rectangle,draw] (9) {} edge from parent node[right] {\tiny{2}}}
+          edge from parent node[left] {\small{m}}}
+          child {node [main node,inner sep=2pt] (10) {C}
+            child {node [rectangle,draw] (11) {} edge from parent node[left]  {\tiny{5}}}
+            child {node [rectangle,draw] (12) {} edge from parent node[left]  {\tiny{7}}}
+            child {node [rectangle,draw] (13) {} edge from parent node[right] {\tiny{2}}}
+          edge from parent node[right] {\small{l}}};
+      \end{tikzpicture}
+	  \caption{A PLP-tree over cars}
+	\end{figure}
+
+\vspace{-1cm}
+
+	\begin{center}
+		Total preorder
+	\end{center}
 }
 
 \frameT{Partial Lexicographic Preference Trees (PLP-Trees)}{
