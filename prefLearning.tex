@@ -4,10 +4,22 @@
     \item Learning preference models in case of PLP-trees
     {\transparent{0.2} \item Reasoning with preferences:
       \begin{itemize}
-        \item Computing winners and ``strong" outcomes when votes are LP-trees
+        \item Computing winners and ``strong" candidates when votes are LP-trees
         \item Application in trip planning
       \end{itemize}}
     {\transparent{0.2} \item Future research directions}
+  \end{enumerate}
+}
+
+\frameT{The Cars Domain}{
+  \begin{enumerate}
+    \item \tbf{BodyType}(B): \{mvan, sedan, sport, suv\}.
+    \item \tbf{Capacity}(C): \{2, 5, 7m\}.
+    \item \tbf{Color}(O): \{black, blue, gray, red, white\}.
+    \item \tbf{LuggageSize}(L): \{big, med, small\}.
+    \item \tbf{Make}(M): \{bmw, ford, honda, vw\}.
+    \item \tbf{Price}(P): \{low, med, high, vhigh\}.
+    \item \tbf{Safety}(S): \{low, med, high\}.
   \end{enumerate}
 }
 
@@ -297,31 +309,31 @@
 		\centering
 		\begin{tabular}{ |c||c|c|c|c| } 
 			\hline
-			Dataset          & \#Attributes & \#Outcomes & \#Examples \\
+			Dataset          & \#Attributes & \#Objects & \#Examples \\
 			\hline \hline
-			BreastCancerWisconsin   & 9 & 270 & 9009 \\ 
+			BreastCancerWisconsin   & 9 & 270 & 9,009 \\ 
 			\hline
-			CarEvaluation           & 6 & 1728 & 682721 \\ 
+			CarEvaluation           & 6 & 1,728 & 682,721 \\ 
 			\hline
-			CreditApproval          & 10 & 520 & 66079 \\
+			CreditApproval          & 10 & 520 & 66,079 \\
 			\hline
-			GermanCredit            & 10 & 914 & 172368  \\
+			GermanCredit            & 10 & 914 & 172,368  \\
 			\hline
-			Ionosphere              & 10 & 118 & 3472 \\
+			Ionosphere              & 10 & 118 & 3,472 \\
 			\hline
 			MammographicMass        & 5 & 62 & 792 \\
 			\hline
-			Mushroom                & 10 & 184 & 8448 \\
+			Mushroom                & 10 & 184 & 8,448 \\
 			\hline
-			Nursery                 & 8 & 1266 & 548064 \\
+			Nursery                 & 8 & 1,266 & 548,064 \\
 			\hline
-			SPECTHeart              & 10 & 115 & 3196 \\
+			SPECTHeart              & 10 & 115 & 3,196 \\
 			\hline
-			TicTacToe               & 9 & 958 & 207832 \\
+			TicTacToe               & 9 & 958 & 207,832 \\
 			\hline
-			Vehicle                 & 10 & 455 & 76713 \\
+			Vehicle                 & 10 & 455 & 76,713 \\
 			\hline
-			Wine                    & 10 & 177 & 10322 \\
+			Wine                    & 10 & 177 & 10,322 \\
 			\hline
 		\end{tabular}
 		\caption{Preference Learning Library\footnotemark}
@@ -367,7 +379,7 @@
 }
 {
 	\begin{center}
-		\#attributes:6, \#outcomes:1728, \#examples:682721
+		\#attributes:6, \#objects:1728, \#examples:682721
 	\end{center}
 
   \begin{figure}
@@ -392,7 +404,7 @@
 }
 {
 	\begin{center}
-		\#attributes:10, \#outcomes:177, \#examples:10322
+		\#attributes:10, \#objects:177, \#examples:10322
 	\end{center}
 
   \begin{figure}

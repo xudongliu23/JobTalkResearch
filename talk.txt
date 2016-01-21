@@ -116,3 +116,35 @@ compactly model total preorders over combinatorial domains.
 P11:
 In this talk, I will stick to the domain of cars that has these 7 multi-valued
 attributes.
+
+P12:
+Now assume we have aquired some preference model from some user.
+And we are given these two cars.
+An interesting research problem is to decide if car1 is preferred to car2,
+or if car2 is preferred to car1.  This is called dominance testing.
+Another research problem, called preference optimization, is to compute
+the most preferred object according to user's preferences.
+
+P13:
+In multi-agent systems, we are interested to compute collective decisions
+given preference models from different agents.
+For instance, we may consider a family buying one car, or a taxi company
+purchasing a fleet of vehicles.
+In both cases, we will want to aggregate individuals' preferences to select
+the optimal cars.
+
+P14:
+What I have discussed so far boils down to a research program on preferences
+that has 3 folds.
+First, it is important to design compact preference models over CD.
+Second, we want to design and implement algorithms that could learn
+preference models.
+Finally, we want to study various reasoning tasks.
+For single agents, we want to investigate dominance testing and preference optimization.
+For groups of agents, other than dominance and optimization, it is also interesting
+to consider manipulation problems where some users want to know if it's possible to
+be better off by reporting untruthful preferences.
+
+P15:
+My PhD work has contributed to the research program on preferences both computationally
+and practically.

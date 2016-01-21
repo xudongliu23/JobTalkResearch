@@ -5,7 +5,7 @@
 %    \item Reasoning with preferences:
 %      \begin{itemize}
 %        \item Preference optimization in case of P-trees
-%        {\transparent{0.2} \item Computing winners and ``strong" outcomes when votes are LP-trees}
+%        {\transparent{0.2} \item Computing winners and ``strong" candidates when votes are LP-trees}
 %        {\transparent{0.2} \item Application in trip planning}
 %      \end{itemize}
 %    {\transparent{0.2} \item Future research directions}
@@ -37,7 +37,7 @@
     {\transparent{0.2} \item Learning preference models in case of PLP-trees}
     \item Reasoning with preferences:
       \begin{itemize}
-        \item Computing winners and ``strong" outcomes when votes are LP-trees
+        \item Computing winners and ``strong" candidates when votes are LP-trees
         {\transparent{0.2} \item Application in trip planning}
       \end{itemize}
     {\transparent{0.2} \item Future research directions}
@@ -48,13 +48,12 @@
 {
 	\begin{itemize}
 		\item $k$-approval: ($1,\ldots,1,0,\ldots,0$) with $k$ being the number
-					of $1$'s and $m-k$ the number of $0$'s where $m=2^p$.
-		\item $(k,l)$-approval: $(a,\ldots, a, b,\ldots, b, 0\ldots, 0)$,
-		      where $a$ and $b$ are constants ($a>b$)
-					and the numbers of $a$'s and $b$'s equal to $k$ and $l$,
-      		respectively.
-		\item $b$-Borda: ($b, b-1, \ldots, 0$), where if $b > m-1$, $b$-Borda is reduced to the regular
-							Borda rule with ($m-1, m-2, \ldots, 1, 0$).
+					of $1$'s.
+		\item $(k,l)$-approval: $(c,\ldots, c, d,\ldots, d, 0\ldots, 0)$,
+		      where $c$ and $d$ are constants ($c>d$),
+					and the numbers of $c$'s and $d$'s equal to $k$ and $l$.
+		\item $b$-Borda: ($b, b-1, \ldots, b-m+1$), where $b$ is a constant and
+					$m$ is the number of candidates.
 	\end{itemize}
 }
 
@@ -215,23 +214,23 @@
 	\end{itemize}
 }
 
-\frameT{Random LP Profiles}
-{
-	\begin{itemize}
-		\item To experiment with LP profiles, we developed methods to randomly generate
-					\tit{encodings} of
-          a special type of CI-CP LP-tree of size linear in the number of
-          attributes
-	\end{itemize}
-
-	\begin{figure}
-		\vspace{-0.2cm}
-		\centering
-		\includegraphics[width=0.4\textwidth]{figs/LPTrees/simple_LP_tree.png}
-		\vspace{-0.3cm}
-		\caption{Random LP-tree}
-	\end{figure}
-}
+%\frameT{Random LP Profiles}
+%{
+%	\begin{itemize}
+%		\item To experiment with LP profiles, we developed methods to randomly generate
+%					\tit{encodings} of
+%          a special type of CI-CP LP-tree of size linear in the number of
+%          attributes
+%	\end{itemize}
+%
+%	\begin{figure}
+%		\vspace{-0.2cm}
+%		\centering
+%		\includegraphics[width=0.4\textwidth]{figs/LPTrees/simple_LP_tree.png}
+%		\vspace{-0.3cm}
+%		\caption{Random LP-tree}
+%	\end{figure}
+%}
 
 \frameT{Varying $p$ and $n$: $2^{p-2}$-approval}
 {
@@ -299,7 +298,7 @@
     {\transparent{0.2} \item Learning preference models in case of PLP-trees}
     \item Reasoning with preferences:
       \begin{itemize}
-        {\transparent{0.2} \item Computing winners and ``strong" outcomes when votes are LP-trees}
+        {\transparent{0.2} \item Computing winners and ``strong" candidates when votes are LP-trees}
         \item Application in trip planning
       \end{itemize}
     {\transparent{0.2} \item Future research directions}
