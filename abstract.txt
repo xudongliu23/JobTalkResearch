@@ -1,0 +1,11 @@
+Preferences are everywhere in various forms, such as movie ratings, favorite ice cream flavors,
+and electoral ballots over candidates.
+In this talk, I will discuss my research work on qualitative preference models, especially
+tree-like preference models, over combinatorial domains that are collections of 
+objects -- often too many to order.
+An example combinatorial domain is a set of cars, characterized by a set of attributes (e.g., color)
+and their values (e.g., white, black, and blue).
+A car is then represented by a vector of attribute values.
+I will show the theoretic and practical results we obtained on research problems in
+preference modeling, learning and reasoning over combinatorial domains.
+I will conclude with future research directions and possible undergraduate research projects.
